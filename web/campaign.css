@@ -84,8 +84,8 @@
 .order-note { margin: 1.2rem 0; }
 .order-note summary { width: fit-content; min-height: 44px; align-items: center; gap: .85rem; padding: .65rem 1rem; border-radius: 3px; color: var(--white); background: var(--ink); font-size: 1rem; }
 .order-note summary:hover { background: #29543c; }
-.order-note summary::after, .food-origins summary::before { content: ""; display: block; flex: none; width: .47em; height: .47em; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-.12em) rotate(45deg); }
-.order-note[open] summary::after, .food-origins[open] summary::before { transform: translateY(.12em) rotate(225deg); }
+.order-note summary::after { content: ""; display: block; flex: none; width: .47em; height: .47em; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-.12em) rotate(45deg); }
+.order-note[open] summary::after { transform: translateY(.12em) rotate(225deg); }
 .order-note-card { margin-top: .55rem; padding: 1.05rem 1.2rem; color: var(--ink); background: var(--cream); border-left: 3px solid var(--ink); }
 .order-note-card p { padding: 0; color: inherit; }
 .order-note-card #preference-text { font-size: 1.14rem; line-height: 1.5; }
@@ -93,7 +93,7 @@
 .order-note-card button[hidden] { display: none; }
 .order-note-card [role="status"] { font-size: .94rem; }
 .food-origins { margin-top: .5rem; }
-.food-origins summary { justify-content: flex-start; align-items: center; gap: .65rem; font-size: 1rem; min-height: 44px; padding: .55rem 0; }
+.sticker-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: .35rem; font-weight: 700; }
 .food-origins p { margin: .45rem 0; padding: 0; font-size: var(--body-size); color: #405547; line-height: 1.55; }
 .origin-link { display: inline-block; white-space: nowrap; font-weight: 700; }
 .item-label-guide { margin-top: .85rem; max-width: 54ch; font-size: var(--body-size); line-height: 1.55; }
