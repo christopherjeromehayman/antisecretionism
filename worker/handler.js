@@ -160,6 +160,9 @@ export default {
   if(!asset)return new Response('Page not found',{status:404});
   const [type,b64]=asset;
   let bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+  if ((path === '/' || path === '/index' || path === '/index.html') && url.searchParams.has('zip')) {
+    bytes = await renderGemmySearch(bytes, url.searchParams.get('zip').trim());
+  }
   if (path === '/movement' || path === '/movement.html') bytes = await renderMovementPage(bytes);
   if (platformRequest && (type.startsWith('text/html') || path === '/sitemap.xml' || path === '/robots.txt')) {
     const page = new TextDecoder().decode(bytes).replaceAll(domain, platform);

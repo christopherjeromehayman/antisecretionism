@@ -15,6 +15,19 @@ function movementText(value, limit) {
   return value.trim();
 }
 
+// An editor adds locations only after seeing the welcome badge on this public menu.
+function gemmyMenuLocations(entry) {
+  if (entry.origin !== 'business' || entry.kind !== 'business' || !Array.isArray(entry.gemmyLocations)) return [];
+  const locations = [];
+  for (const location of entry.gemmyLocations) {
+    const name = movementText(location?.name, 160);
+    const address = movementText(location?.address, 260);
+    const zip = movementText(location?.zip, 5);
+    if (name && address && /^[0-9]{5}$/.test(zip)) locations.push({ name, address, zip });
+  }
+  return locations;
+}
+
 function movementItems(feed) {
   if (feed?.version !== 1 || !Array.isArray(feed.items)) {
     throw new Error('Invalid movement feed');
@@ -26,9 +39,12 @@ function movementItems(feed) {
     const title = movementText(entry.title, 320);
     const source = movementText(entry.source, 160);
     const published = movementText(entry.published, 10);
-    if (!title || !source || !/^\d{4}-\d{2}-\d{2}$/.test(published)) continue;
-    const date = new Date(published + 'T00:00:00Z');
-    if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== published) continue;
+    const gemmyLocations = gemmyMenuLocations(entry);
+    const verifiedOn = gemmyLocations.length ? movementText(entry.verifiedOn, 10) : '';
+    const dateText = published || verifiedOn;
+    if (!title || !source || !/^\d{4}-\d{2}-\d{2}$/.test(dateText)) continue;
+    const date = new Date(dateText + 'T00:00:00Z');
+    if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== dateText) continue;
     let link;
     try { link = new URL(movementText(entry.url, 2000)); } catch { continue; }
     if (link.protocol !== 'https:' || link.username || link.password || link.port) continue;
@@ -40,8 +56,9 @@ function movementItems(feed) {
     const key = link.href.replace(/\/$/, '');
     if (seen.has(key)) continue;
     seen.add(key);
-    items.push({ title, source, published, url: link.href, date,
-      kind: entry.kind, origin: entry.origin, summary: movementText(entry.summary, 600) });
+    items.push({ title, source, published, dateText, url: link.href, date,
+      kind: entry.kind, origin: entry.origin, summary: movementText(entry.summary, 600),
+      gemmyLocations });
   }
   if (feed.items.length && !items.length) throw new Error('No valid movement items');
   return items.sort((a, b) => b.date - a.date);
@@ -92,7 +109,8 @@ function movementList(items) {
   return '<ul class="coverage-items">' + items.map(item => {
     const heading = '<h3 class="coverage-title"><a href="' + movementHtml(item.url) + '">' + movementHtml(item.title) + '</a></h3>';
     const credit = movementHtml(item.source) + ' · ' + movementPlatforms.get(item.kind);
-    const date = '<time datetime="' + item.published + '">' + movementDateFormat.format(item.date) + '</time>';
+    const dateLabel = item.published ? '' : 'Menu verified ';
+    const date = dateLabel + '<time datetime="' + item.dateText + '">' + movementDateFormat.format(item.date) + '</time>';
     const summary = item.summary ? '<p>' + movementHtml(item.summary) + '</p>' : '';
     return '<li>' + heading + '<p class="source-line">' + credit + ' · ' + date + '</p>' + summary + '</li>';
   }).join('') + '</ul>';
@@ -113,4 +131,35 @@ async function renderMovementPage(bytes) {
   });
   const template = new TextDecoder().decode(bytes);
   return new TextEncoder().encode(template.replace('<!-- movement-links -->', () => sections.join('\n')));
+}
+
+async function renderGemmySearch(bytes, zip) {
+  const template = new TextDecoder().decode(bytes);
+  const valid = /^[0-9]{5}$/.test(zip);
+  let result = '<p>Enter a five-digit US ZIP code to search the directory.</p>';
+  if (valid) {
+    const matches = [];
+    const seen = new Set();
+    for (const item of await loadMovementItems()) {
+      for (const location of item.gemmyLocations) {
+        if (location.zip !== zip) continue;
+        const key = (location.name + '|' + location.address).toLowerCase();
+        if (seen.has(key)) continue;
+        seen.add(key);
+        matches.push({ ...location, url: item.url });
+      }
+    }
+    matches.sort((a, b) => a.name.localeCompare(b.name) || a.address.localeCompare(b.address));
+    if (matches.length) {
+      const heading = matches.length === 1 ? '1 Gemmy menu' : matches.length + ' Gemmy menus';
+      const rows = matches.map(place => '<li><a href="' + movementHtml(place.url) + '">' +
+        movementHtml(place.name) + ' menu</a><span>' + movementHtml(place.address) + '</span></li>');
+      result = '<p><strong>' + heading + ' in ' + zip + '</strong></p><ul class="finder-list">' + rows.join('') + '</ul>';
+    } else {
+      result = '<p>We haven’t listed a Gemmy menu in <strong>' + zip + '</strong> yet. Try another ZIP code.</p>';
+    }
+  }
+  const page = template.replace('id="finder-zip"', valid ? 'id="finder-zip" value="' + zip + '"' : 'id="finder-zip" aria-invalid="true" aria-describedby="finder-result"')
+    .replace('<!-- gemmy-matches -->', () => '<div id="finder-result" class="finder-result" role="status">' + result + '</div>');
+  return new TextEncoder().encode(page);
 }
