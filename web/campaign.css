@@ -1,3 +1,6 @@
+.film-quote { padding-block: clamp(1.1rem, 2.2vw, 2rem); text-align: center; }
+.film-quote blockquote { margin: 0; font: italic 400 clamp(1.3rem, 2.25vw, 2rem)/1.18 HouseSerif, Georgia, serif; text-wrap: balance; }
+.film-quote figcaption { margin-top: .5rem; font-size: .875rem; line-height: 1.5; color: #405547; }
 .campaign-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr);
