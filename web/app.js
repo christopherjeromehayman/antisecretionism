@@ -114,6 +114,14 @@ mealTabs.forEach((tab,index) => {
 
 const copyButton=document.getElementById('copy-preferences');
 const copyStatus=document.getElementById('copy-status');
+const orderNote = document.getElementById('order-note');
+function showLinkedOrderNote() {
+  if (location.hash === '#order-note' || location.hash === '#preference-text') {
+    orderNote.open = true;
+  }
+}
+showLinkedOrderNote();
+window.addEventListener('hashchange', showLinkedOrderNote);
 copyButton.hidden=false;
 copyButton.addEventListener('click',async()=>{
   const text=document.getElementById('preference-text').textContent;

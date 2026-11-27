@@ -33,5 +33,16 @@
 .badge-kit textarea { font-family: ui-monospace, monospace; }
 .badge-kit .kit-secondary { color: var(--ink); border: 1px solid var(--line); background: transparent; }
 .badge-kit p[role="status"] { min-height: 0; margin: .3rem 0; }
-.badge-kit .dish-check ul { padding-left: 1.25rem; }
+.badge-kit .dish-check ol { padding-left: 1.45rem; }
 .badge-kit .dish-check li { max-width: 65ch; margin-block: .8rem; line-height: 1.55; }
+.order-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0 2rem;
+  padding: 1.1rem clamp(1rem, 3vw, 1.5rem);
+  background: var(--sage);
+  border-left: .25rem solid var(--ink);
+}
+.order-example dt { margin-bottom: .4rem; font-size: .94rem; font-weight: bold; }
+.badge-kit .order-example dd { margin: 0; }
