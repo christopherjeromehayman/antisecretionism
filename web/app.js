@@ -13,7 +13,6 @@ const foods = [
   {name:'Butter & cheese',status:'out',note:'Dairy in another form. Ghee goes on this list, too.',keywords:'cheese butter ghee parmesan cheddar mozzarella dairy'},
   {name:'Dairy yogurt',status:'out',note:'Milk-based yogurt sits out. Plant-based versions can fit.',keywords:'yoghurt yogurt kefir dairy greek'},
   {name:'Honey',status:'out',note:'A clear house no. Check dressings, marinades, and glazes.',keywords:'honey bee bees honeycomb'},
-  {name:'Royal jelly',status:'out',note:'Nurse bees make this food for larvae and the queen.',keywords:'royal jelly bee bees hive'},
   {name:'Beeswax',status:'out',note:'This bee-made wax can turn up on coated sweets. Look for beeswax or E901.',keywords:'beeswax bee wax e901 e 901 coating candy'},
   {name:'Shellac',status:'out',note:'This glaze comes from lac insects. Look for shellac or E904 on coated candies.',keywords:'shellac lac e904 e 904 candy glaze coating'},
   {name:'Bread',status:'check',note:'Recipes vary. Look for eggs, milk, butter, whey, or honey.',keywords:'bread toast sourdough brioche bun bakery pastry bagel'},
