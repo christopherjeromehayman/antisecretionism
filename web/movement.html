@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Movement news and community links | Anti-Secretionist</title>
+  <meta name="description" content="Follow public conversations about anti-secretionism, find food makers using Gemmy, and see how families are sharing the movement.">
+  <link rel="icon" href="/assets/gemmy-mark.png?v=lookout">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/club.css">
+  <link rel="stylesheet" href="/movement.css">
+  <script defer src="/navigation.js"></script>
+  <script type="module" src="/reach.js"></script>
+  <script defer src="/movement.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="club-head">
+    <a class="club-brand" href="/"><img src="/assets/gemmy-mark.png?v=lookout" width="42" height="42" alt=""><span>ANTI-<wbr>SECRETIONIST</span></a>
+    <a class="club-check" href="/checker">Check a label</a>
+    <button class="nav-disclosure" type="button" aria-expanded="false" aria-controls="main-links" hidden><span aria-hidden="true" class="nav-lines"></span>Menu</button>
+    <nav id="main-links" aria-label="Main">
+      <a href="/checker">Label checker</a><a href="/journal">Field notes</a><a href="/petition">Petition</a><a href="/gemmy">Meet Gemmy</a>
+    </nav>
+  </header>
+  <main id="main" class="sheet movement">
+    <h1>Movement news</h1>
+    <p class="movement-intro">Who’s talking about anti-secretionism? Follow the conversations, and see which kitchens are making it easier for families to order.</p>
+    <!-- movement-links -->
+    <p class="source-line">Each section shows up to 20 recent links. <a href="https://github.com/christopherjeromehayman/antisecretionism/blob/main/web/movement-links.json">View the full public link list.</a></p>
+    <section aria-labelledby="activity-heading" class="movement-activity">
+      <h2 id="activity-heading">How people find and share us</h2>
+      <p>An introduction view counts when at least half the introduction is on screen for two seconds. These totals count actions, so one person can appear several times. Copying a link or completing a share dialog tells us someone used the tool. Whether another person saw the link is unknown.</p>
+      <p id="activity-status" role="status" hidden></p>
+      <dl class="activity-list" id="activity-list" hidden>
+        <div><dt>Introduction views</dt><dd data-count="intro_view">—</dd></div>
+        <div><dt>Share links copied</dt><dd data-count="share_link_copied">—</dd></div>
+        <div><dt>Share dialogs completed</dt><dd data-count="share_sheet_completed">—</dd></div>
+        <div><dt>Badge codes copied</dt><dd data-count="badge_code_copied">—</dd></div>
+        <div><dt>Visits from badge links</dt><dd data-count="badge_referral">—</dd></div>
+        <div><dt>Visits from shared links</dt><dd data-count="share_referral">—</dd></div>
+      </dl>
+      <noscript><p>Enable JavaScript to see the current activity totals.</p></noscript>
+    </section>
+    <footer><a href="/menu-label">Get the Gemmy badge</a> · <a href="/petition">Sign the menu petition</a> · <a href="/privacy">Privacy</a></footer>
+  </main>
+</body>
+</html>

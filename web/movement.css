@@ -1,0 +1,17 @@
+.movement { max-width: 56rem; }
+.movement .movement-intro { max-width: 52ch; font-size: clamp(1.08rem, 1rem + .45vw, 1.32rem); }
+.movement section { margin-top: 2.25rem; padding-top: .25rem; }
+.movement .coverage-group, .movement .movement-activity { border-top: 1px solid var(--line); }
+.movement section h2 { margin-top: 1.35rem; }
+.movement .coverage-items { list-style: none; margin: 1rem 0 0; padding: 0; }
+.movement .coverage-items li + li { margin-top: 1.5rem; }
+.movement .source-line { color: var(--muted); font-size: .875rem; margin: .35rem 0; }
+.movement .coverage-title { font: bold 1.15rem/1.4 Georgia, serif; margin: 0; }
+.movement .activity-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 2rem; margin: 1.25rem 0 0; }
+.movement .activity-list[hidden] { display: none; }
+.movement .activity-list > div { display: flex; align-items: baseline; justify-content: space-between; gap: .8rem; padding: .65rem 0; border-top: 1px solid var(--line); }
+.movement .activity-list dt, .movement .activity-list dd { font: inherit; line-height: 1.4; margin: 0; }
+.movement .activity-list dd { font-weight: 700; font-variant-numeric: tabular-nums; }
+@media (max-width: 38rem) {
+  .movement .activity-list { grid-template-columns: 1fr; }
+}

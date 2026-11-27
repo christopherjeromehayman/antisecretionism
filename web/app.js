@@ -128,21 +128,3 @@ copyButton.addEventListener('click',async()=>{
     copyStatus.textContent='Text selected. Use your device’s Copy command.';
   }
 });
-
-const sampleToggle = document.getElementById('sample-toggle');
-const sampleCount = document.getElementById('sample-count');
-const sampleItems = document.getElementById('sample-items');
-
-function filterSampleMenu() {
-  const filtering = sampleToggle.checked;
-  for (const item of sampleItems.querySelectorAll('[data-unmatched]')) {
-    item.hidden = filtering;
-  }
-  const total = sampleItems.children.length;
-  const visible = sampleItems.querySelectorAll('li:not([hidden])').length;
-  sampleCount.textContent = filtering ? visible + ' of ' + total + ' dishes' : 'All ' + total + ' dishes';
-}
-
-sampleToggle.disabled = false;
-sampleToggle.addEventListener('change', filterSampleMenu);
-filterSampleMenu();

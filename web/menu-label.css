@@ -1,0 +1,21 @@
+.badge-kit h1 { max-width: 16ch; }
+.badge-kit h1 em { color: #963522; }
+.badge-kit .badge-intro { max-width: 56ch; }
+.badge-offer { margin-block: 2rem; border-block: 1px solid var(--line); padding-block: 1.25rem; }
+.badge-offer h2 { margin-top: 0; }
+.badge-offer .welcome-badge { display: block; width: min(100%, 264px); height: auto; margin-block: 1.3rem; }
+.kit-actions { display: flex; gap: .1rem 1.25rem; align-items: center; flex-wrap: wrap; }
+.kit-actions a { display: inline-flex; align-items: center; min-height: 44px; }
+.badge-kit [hidden] { display: none; }
+.badge-kit details { border-bottom: 0; }
+.badge-kit summary { justify-content: flex-start; gap: .55rem; min-height: 44px; padding: .65rem 0; }
+.badge-kit summary::before { content: "+"; color: var(--ink); font-size: 1.2rem; }
+.badge-kit details[open] summary::before { content: "−"; }
+.badge-kit details p { padding: 0; margin: .65rem 0; }
+.badge-kit label { font-weight: 700; }
+.badge-kit textarea, .badge-kit input { padding: .75rem; border: 1px solid var(--line); font-size: 1rem; }
+.badge-kit textarea { font-family: ui-monospace, monospace; }
+.badge-kit .kit-secondary { color: var(--ink); border: 1px solid var(--line); background: transparent; }
+.badge-kit p[role="status"] { min-height: 0; margin: .3rem 0; }
+.badge-kit .dish-check ul { padding-left: 1.25rem; }
+.badge-kit .dish-check li { max-width: 65ch; margin-block: .8rem; line-height: 1.55; }

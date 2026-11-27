@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gemmy’s menu badge for restaurants and food makers | Anti-Secretionist</title>
+  <meta name="description" content="Show families that your team welcomes anti-secretionists. Get Gemmy’s free website badge and learn how to label a specific dish or product.">
+  <link rel="icon" href="/assets/gemmy-mark.png?v=lookout">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/club.css">
+  <link rel="stylesheet" href="/menu-label.css">
+  <script defer src="/navigation.js"></script>
+  <script type="module" src="/reach.js"></script>
+  <script type="module" src="/menu-label.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="club-head">
+    <a class="club-brand" href="/"><img src="/assets/gemmy-mark.png?v=lookout" width="42" height="42" alt=""><span>ANTI-<wbr>SECRETIONIST</span></a>
+    <a class="club-check" href="/checker">Check a label</a>
+    <button class="nav-disclosure" type="button" aria-expanded="false" aria-controls="main-links" hidden><span aria-hidden="true" class="nav-lines"></span>Menu</button>
+    <nav id="main-links" aria-label="Main">
+      <a href="/checker">Label checker</a>
+      <a href="/journal">Field notes</a>
+      <a href="/petition">Petition</a>
+      <a href="/movement">Movement news</a>
+    </nav>
+  </header>
+  <main id="main" class="sheet badge-kit">
+    <p class="eyebrow">For restaurants &amp; food makers</p>
+    <h1>Put Gemmy on <em>your menu.</em></h1>
+    <p class="badge-intro">Gemmy tells families, <strong>“Anti-secretionists are welcome here. We’ll help you find something you can eat.”</strong> A diner can ask, “Could you cook my steak in olive oil?” or “Does the bread have milk or an egg wash?” Display her badge if your team is willing to check ingredients, explain how food is prepared, and say when a swap is possible.</p>
+
+    <section class="badge-offer" aria-labelledby="get-badge">
+      <h2 id="get-badge">Get the free welcome badge</h2>
+      <p>Add Gemmy beside your menu, ordering information, or product details. The badge links customers to this guide.</p>
+      <img class="welcome-badge" src="/assets/anti-secretionist-friendly.svg" width="264" height="76" alt="Anti-secretionists welcome here. Ask us about ingredients and preparation.">
+      <div class="kit-actions">
+        <button type="button" data-copy="badge-html" hidden>Copy badge code</button>
+        <a href="/assets/anti-secretionist-friendly.svg" download="gemmy-welcome-badge.svg">Download badge (SVG)</a>
+      </div>
+      <p id="badge-feedback" role="status"></p>
+      <details id="manual-code">
+        <summary>Website code and text link</summary>
+        <p>Paste this snippet into a custom HTML block on your site.</p>
+        <label for="badge-html">Badge HTML</label>
+        <textarea id="badge-html" rows="4" readonly spellcheck="false" autocapitalize="off">&lt;a href="https://antisecretionist.com/menu-label?ref=menu-badge"&gt;
+  &lt;img src="https://antisecretionist.com/assets/anti-secretionist-friendly.svg" width="264" height="76" alt="Anti-secretionists welcome here. Ask us about ingredients and preparation." style="max-width:100%;height:auto"&gt;
+&lt;/a&gt;</textarea>
+        <p>For a menu builder, upload the badge or type <strong>Anti-secretionists welcome here</strong>. Set its link to the address below.</p>
+        <label for="badge-link">Badge destination</label>
+        <input id="badge-link" type="url" value="https://antisecretionist.com/menu-label?ref=menu-badge" readonly>
+        <button type="button" class="kit-secondary" data-copy="badge-link" hidden>Copy link</button>
+        <p id="link-feedback" role="status"></p>
+      </details>
+    </section>
+
+    <section class="dish-check" aria-labelledby="dish-check">
+      <h2 id="dish-check">Label a dish or product</h2>
+      <p>The welcome badge describes your team. Use <strong>Anti-secretionist friendly</strong> beside an individual dish or packaged product once you’ve checked its recipe. Your kitchen or brand stands behind that check.</p>
+      <ul>
+        <li><strong>Check the whole recipe.</strong> Meat and plants can fit. Check bread, sauces, cooking fats, garnishes, and glazes for eggs, dairy, honey, royal jelly, beeswax, and shellac, including ingredients derived from them. Confirm anything unclear with the supplier.</li>
+        <li><strong>Describe the exact order.</strong> If a dish needs a substitution, name it beside the dish and offer it wherever customers order. For example, “Grilled steak — anti-secretionist friendly when ordered with olive oil in place of butter.”</li>
+        <li><strong>Keep it current.</strong> For packaged food, check the specific product and flavor. Review the label again when ingredients, suppliers, or preparation change. Keep allergen and cross-contact guidance available separately.</li>
+      </ul>
+      <p><a href="/beyond">Read the ingredient guide</a> · <a href="/retail">See the grocery labeling pilot</a></p>
+    </section>
+    <footer><a href="/">Home</a> · <a href="/petition">Sign the menu petition</a> · <a href="/privacy">Privacy</a></footer>
+  </main>
+</body>
+</html>

@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#173d2c">
-  <title>Anti-Secretionist | Family meals with Gemmy</title>
-  <meta name="description" content="Meet Gemmy, the kid with the binoculars. Find meal ideas, check a food label, and help families order dinner without dairy, eggs or honey.">
-  <meta property="og:title" content="Anti-Secretionist | Family meals with Gemmy">
-  <meta property="og:description" content="Join Gemmy and her family on the lookout for meals without dairy, eggs or honey. Try a sample menu and help bring the filter to restaurants.">
+  <title>Anti-Secretionist | Put us on the menu</title>
+  <meta name="description" content="Look for Gemmy on a menu to find kitchens willing to check ingredients and preparation. Get the free badge or sign the petition for an anti-secretionist menu filter.">
+  <meta property="og:title" content="Anti-Secretionist | Put us on the menu">
+  <meta property="og:description" content="Does the bread contain milk? Can you cook the steak in olive oil? Gemmy shows families which kitchens welcome these questions. Put her on your menu.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://antisecretionist.com">
   <meta property="og:image" content="https://antisecretionist.com/assets/gemmy.png?v=lookout">
@@ -17,6 +17,7 @@
   <link rel="preload" href="/assets/sans-regular.woff" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="/styles.css">
   <script src="/app.js" defer></script>
+  <script type="module" src="/reach.js"></script>
   <link rel="stylesheet" href="/club.css">
   <link rel="stylesheet" href="/campaign.css">
 <script defer src="/navigation.js"></script></head>
@@ -31,34 +32,25 @@
       <a class="nav-cta" href="/checker">Check a label</a>
       <button class="nav-disclosure" type="button" aria-expanded="false" aria-controls="main-links" hidden><span aria-hidden="true" class="nav-lines"></span>Menu</button>
       <nav id="main-links" class="desktop-nav" aria-label="Main navigation">
-        <a href="/gemmy">Meet Gemmy</a><a href="/petition#restaurant-pilot">For restaurants</a><a href="#food-guide">Food guide</a><a href="/journal">Field notes</a>
+        <a href="/gemmy">Meet Gemmy</a><a href="/menu-label">Get the badge</a><a href="#food-guide">Food guide</a><a href="/movement">Movement news</a>
       </nav>
     </div>
   </header>
   <main id="main">
     <section id="top" class="campaign-hero shell" aria-labelledby="campaign-title">
       <div class="campaign-copy">
-        <p class="campaign-kicker">Family dinners with Gemmy</p>
-        <h1 id="campaign-title">Where can we<br><em>eat together?</em></h1>
+        <p class="campaign-kicker">Dining out with Gemmy</p>
+        <h1 id="campaign-title">Put us on<br><em>the menu.</em></h1>
         <p class="campaign-lead">Imagine ordering dinner without having to ask if there’s milk in the bread or butter on the steak.</p>
-        <p class="campaign-ask">That’s Gemmy with the binoculars. She’s looking for a place that serves meat and vegetables without butter, bread without milk, and pie without glaze. We want families to find those dishes with one <strong>Anti-Secretionist Friendly</strong> menu filter.</p>
+        <p class="campaign-ask"><strong>See Gemmy on a menu? “We’ll help you find something you can eat.”</strong> That kitchen welcomes anti-secretionists. They’ll check the bread for milk or eggs, the glaze for honey, and whether your steak can be cooked in olive oil.</p>
         <div class="campaign-actions">
-          <a class="campaign-button" href="#menu">Find a family meal</a>
+          <a class="campaign-button" href="/menu-label">Put Gemmy on your menu</a>
           <a class="campaign-link" href="/petition">Sign the petition</a>
         </div>
       </div>
-      <section class="menu-scene sample-menu" aria-labelledby="sample-heading">
-        <div class="sample-heading"><h2 id="sample-heading">Sample menu</h2><span id="sample-count" aria-live="polite">2 of 3 dishes</span></div>
-        <div class="gemmy-lookout"><img src="/assets/gemmy-lookout-logo.png" width="582" height="707" fetchpriority="high" alt="Gemmy Lookout Patch. Gemmy looks through binoculars above her name in navy lettering."></div>
-        <div class="sample-body">
-          <label class="sample-filter"><span>Anti-secretionist friendly</span><input id="sample-toggle" type="checkbox" role="switch" checked aria-controls="sample-items" disabled><span class="sample-switch" aria-hidden="true"></span></label>
-          <ul id="sample-items">
-            <li><strong>Grilled steak</strong><span>Olive oil &amp; sea salt</span></li>
-            <li data-unmatched hidden><strong>Buttermilk chicken</strong><span>Buttermilk marinade</span></li>
-            <li><strong>White bean salad</strong><span>Lemon &amp; herbs</span></li>
-          </ul>
-        </div>
-      </section>
+      <a class="campaign-gemmy" href="/menu-label" aria-label="What the Gemmy welcome badge means">
+        <img src="/assets/gemmy-lookout-logo.png" width="582" height="707" fetchpriority="high" alt="Gemmy in pink sandals, looking through binoculars with one foot on a rock.">
+      </a>
     </section>
 
     <section id="idea" class="campaign-plan" aria-labelledby="plan-heading">
@@ -67,13 +59,21 @@
           <p class="campaign-kicker">Our community</p>
           <h2 id="plan-heading">Everyone’s welcome<br><em>at the table.</em></h2>
           <p>One kid wants butter on their potatoes. Another likes olive oil. They can share a table, tell the same terrible knock-knock jokes, and order their potatoes two different ways.</p>
-          <p>Some of us eat meat and plants and skip dairy, eggs and honey. If that sounds like someone in your family, here’s a name you can use when you order: <strong>“I’m an anti-secretionist.”</strong></p>
+          <p data-movement-intro>“I’m an anti-secretionist” is our shorthand at the table. Meat and plants are on the menu. We skip dairy, eggs, honey, and the other ingredients in our <a class="inline-resource" href="/what-is-anti-secretionism">food guidelines</a>.</p>
           <p id="rules">Love honey on your oats? We’ll pass you the jar. We want to feel welcome at the table, too. A menu that tells us what’s in a dish means we can all order what we like and get on with breakfast.</p>
           <a class="campaign-link" href="/non-believers#breakfast-title">How milk and honey are made</a>
         </div>
         <div class="plan-steps">
-          <article><h3>Label the dish.</h3><p>A restaurant checks the whole recipe, from the oil in the pan to the glaze on top. If it fits as served, the kitchen can put “Anti-secretionist friendly” on its menu.</p><a href="/petition#restaurant-pilot">Try it on your menu</a></article>
+          <article><h3>Give diners a sign.</h3><p>Run a restaurant, bakery, or food brand? Put Gemmy on your website to say you welcome ingredient questions. Once you’ve checked a specific dish or product, mark it “Anti-secretionist friendly” beside its name.</p><a href="/menu-label">Get the free badge and wording</a></article>
           <article><h3>Make it a filter.</h3><p>We want diners to tap one option on any ordering app and see the dishes a kitchen has checked. Your signature helps us show platforms how many people want it.</p><a href="/petition">Read the petition</a></article>
+          <article><h3>Tell someone at your table.</h3><p>Know a baker who already makes bread without milk, eggs, or honey? Send them Gemmy. <a class="text-inline" href="/movement">See who’s talking about the movement.</a></p>
+            <div class="campaign-share" data-share-tools data-share-path="/">
+              <button type="button" data-copy-share hidden>Copy a link to share</button>
+              <button type="button" data-native-share hidden>Share…</button>
+              <input type="text" data-share-fallback aria-label="Link to share" readonly hidden>
+              <span data-share-status role="status"></span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -101,7 +101,7 @@
   <footer class="campaign-footer shell">
     <a class="footer-brand" href="#top">Anti-Secretionist</a>
     <nav aria-label="More from Anti-Secretionist">
-      <a href="/nutrition">Nutrition guide</a><a href="/retail">Grocery labels</a><a href="/retail#ask">Ask a brand</a>
+      <a href="/menu-label">Get the Gemmy badge</a><a href="/movement">Movement news &amp; activity</a><a href="/journal">Field notes</a><a href="/nutrition">Nutrition guide</a><a href="/retail">Grocery labels</a><a href="/retail#ask">Ask a brand</a>
       <a href="/what-is-anti-secretionism#favorites">Favorite swaps</a><a href="/gemmy">Meet Gemmy</a>
       <a href="/non-believers">Why we eat this way</a><a href="/privacy">Privacy</a>
     </nav>

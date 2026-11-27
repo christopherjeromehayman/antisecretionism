@@ -1,7 +1,6 @@
-/* Gemmy looks across the sample ordering menu. */
 .campaign-hero {
   display: grid;
-  grid-template-columns: minmax(0, .95fr) minmax(0, 1fr);
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
   padding-block: clamp(2.5rem, 5.5vw, 6rem);
@@ -55,44 +54,13 @@
 .campaign-button:hover { background: #29543c; }
 .campaign-link, .plan-steps a, .inline-resource { text-decoration: underline; text-underline-offset: .24em; text-decoration-thickness: 1px; }
 .campaign-link:hover, .inline-resource:hover { color: #9d3625; }
-.menu-scene {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  grid-template-areas: "heading badge" "dishes dishes";
-  align-items: end;
-  gap: 1rem;
-  width: 100%;
-  max-width: 27rem;
+.campaign-gemmy {
+  display: block;
   justify-self: center;
+  width: clamp(12rem, 22vw, 19rem);
+  max-width: 100%;
 }
-.gemmy-lookout { grid-area: badge; width: clamp(7rem, 13.5vw, 11.5rem); }
-.gemmy-lookout img { width: 100%; height: auto; }
-.sample-heading { grid-area: heading; padding-bottom: .25rem; }
-.sample-heading > span { display: block; margin-top: .35rem; }
-.sample-body { grid-area: dishes; border-top: 1px solid var(--ink); }
-.sample-filter, .sample-menu li { display: flex; align-items: center; justify-content: space-between; gap: .65rem; }
-.sample-heading h2 { font: italic 400 clamp(1.65rem, 2.55vw, 2.25rem)/1.06 HouseSerif, Georgia, serif; letter-spacing: -.055em; }
-.sample-heading > span { font-size: .82rem; color: #516452; }
-.sample-filter {
-  position: relative;
-  padding: .7rem 0;
-  min-height: 48px;
-  font-size: .94rem;
-  font-weight: 700;
-  cursor: pointer;
-}
-.sample-filter:has(input:focus-visible) { outline: 3px solid var(--red); outline-offset: 3px; }
-.sample-filter input { position: absolute; opacity: 0; width: 1px; height: 1px; }
-.sample-switch { width: 2.22rem; height: 1.3rem; padding: 2px; border: 1px solid #5a6e61; border-radius: 1rem; flex: none; background: #627065; }
-.sample-switch::before { content: ""; display: block; height: 100%; aspect-ratio: 1; border-radius: 50%; background: white; transition: transform .14s; }
-.sample-filter input:checked + .sample-switch { background: var(--ink); border-color: var(--ink); }
-.sample-filter input:checked + .sample-switch::before { transform: translateX(.88rem); }
-.sample-menu ul { margin: 0; padding: 0; list-style: none; }
-.sample-menu li { border-top: 1px solid var(--line); padding: .59rem 0; line-height: 1.2; }
-.sample-menu li:last-child { padding-bottom: 0; }
-.sample-menu li[hidden] { display: none; }
-.sample-menu li strong { font-size: .95rem; }
-.sample-menu li span { color: #4e5b4d; font-size: .84rem; text-align: right; }
+.campaign-gemmy img { display: block; width: 100%; height: auto; }
 .campaign-plan { padding-block: clamp(3rem, 5.8vw, 6.5rem); background: #183e30; color: #fff8e8; }
 .plan-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 7.5rem); }
 .plan-intro .campaign-kicker { color: #edd29a; }
@@ -149,8 +117,8 @@
 
 @media (max-width: 700px) {
   .campaign-hero {
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-areas: "kicker" "title" "lead" "actions" "sample" "story";
+    grid-template-columns: minmax(0, 1fr) clamp(4.8rem, 22vw, 8rem);
+    grid-template-areas: "kicker gemmy" "title gemmy" "lead lead" "story story" "actions actions";
     gap: 0;
     padding-block: 1.4rem 1.9rem;
   }
@@ -160,17 +128,12 @@
     grid-area: title;
     margin: .6rem 0 .75rem;
   }
-  .campaign-lead { grid-area: lead; }
+  .campaign-lead { grid-area: lead; margin-top: .65rem; }
   .campaign-actions { grid-area: actions; gap: .3rem .9rem; margin: .85rem 0 1.05rem; }
   .campaign-actions a { min-height: 44px; display: inline-flex; align-items: center; }
   .campaign-button { padding: .65rem .85rem; }
   .campaign-ask { grid-area: story; margin: 1rem 0 0; max-width: 52ch; font-size: 1rem; line-height: 1.5; }
-  .menu-scene { grid-area: sample; max-width: none; gap: .7rem 1rem; }
-  .gemmy-lookout { width: clamp(5rem, 22vw, 6.75rem); }
-  .sample-heading h2 { font-size: clamp(1.8rem, 7.4vw, 2.5rem); }
-  .sample-heading > span { font-size: .875rem; }
-  .sample-menu li { padding: .65rem 0; }
-  .sample-menu li span { font-size: .875rem; }
+  .campaign-gemmy { grid-area: gemmy; align-self: center; width: 100%; }
   .campaign-footer nav { gap: .15rem 1.15rem; }
   .campaign-footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
 }
@@ -222,3 +185,11 @@
   .section-space { padding-block: 2.75rem; }
   .faq-section { gap: 1.25rem; }
 }
+
+.plan-steps .text-inline { display: inline; margin: 0; font-weight: inherit; }
+.campaign-share { display: flex; align-items: center; flex-wrap: wrap; gap: .35rem 1rem; margin-top: .4rem; }
+.campaign-share button { min-height: 44px; padding: 0; font: inherit; font-weight: 700; color: #fff8e8; background: transparent; border: 0; text-decoration: underline; text-underline-offset: .24em; cursor: pointer; }
+.campaign-share button:hover { color: #f5d38f; }
+.campaign-share input { width: 100%; min-width: 0; color: var(--ink); padding: .6rem; font: inherit; }
+.campaign-share [role="status"] { font-size: .94rem; }
+.campaign-share [hidden] { display: none; }
