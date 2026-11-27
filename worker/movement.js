@@ -102,7 +102,7 @@ async function renderMovementPage(bytes) {
   const items = await loadMovementItems();
   const groups = [
     ['community', 'From our community', 'Our own posts and conversations will appear here.'],
-    ['business', 'On the menu', 'We’ll link to restaurants and food makers here when we can verify Gemmy or an anti-secretionist label on their own menu, website or public post.'],
+    ['business', 'On the menu', 'We’ll link to restaurants and food makers here when we can verify the Gemmy badge or a No Secretions label on their own menu, website or public post.'],
     ['independent', 'Elsewhere in the news and on social', 'We haven’t listed an independent mention yet. This is where you’ll find reporting and public posts from people outside our team.']
   ];
   const sections = groups.map(([origin, heading, empty]) => {
