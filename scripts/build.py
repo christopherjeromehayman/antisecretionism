@@ -46,7 +46,13 @@ robots = f"User-agent: OAI-SearchBot\nUser-agent: Claude-SearchBot\nUser-agent: 
 add_asset("/robots.txt", "text/plain", robots.encode())
 out = Path("dist/server")
 out.mkdir(exist_ok=True, parents=True)
-(out / "index.js").write_text("const ASSETS=" + json.dumps(assets, separators=(",", ":")) + ";\n" + Path("worker/handler.js").read_text())
+movement_feed = json.loads(Path("web/movement-links.json").read_text())
+(out / "index.js").write_text("\n".join([
+    "const ASSETS=" + json.dumps(assets, separators=(",", ":")) + ";",
+    "const MOVEMENT_FALLBACK=" + json.dumps(movement_feed, separators=(",", ":")) + ";",
+    Path("worker/movement.js").read_text(),
+    Path("worker/handler.js").read_text(),
+]))
 Path("dist/.openai").mkdir(exist_ok=True)
 shutil.copy(".openai/hosting.json", "dist/.openai/hosting.json")
 shutil.copytree("drizzle", "dist/drizzle", dirs_exist_ok=True)
