@@ -1,6 +1,22 @@
 .badge-kit h1 { max-width: 16ch; }
 .badge-kit h1 em { color: #963522; }
 .badge-kit .badge-intro { max-width: 56ch; }
+.sticker-offer {
+  display: grid;
+  grid-template-columns: minmax(9rem, .75fr) minmax(0, 1.6fr);
+  gap: .75rem clamp(1.5rem, 4vw, 3rem);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  margin-block: 2rem;
+  padding-top: 1.5rem;
+}
+.sticker-preview img { display: block; width: min(100%, 15rem); height: auto; margin: auto; }
+.sticker-copy h2 { margin-top: 0; }
+.sticker-code { grid-column: 1 / -1; }
+@media (max-width: 600px) {
+  .sticker-offer { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .sticker-preview img { width: min(48vw, 11rem); margin: 0; }
+}
 .badge-offer { margin-block: 2rem; border-block: 1px solid var(--line); padding-block: 1.25rem; }
 .badge-offer h2 { margin-top: 0; }
 .badge-offer .welcome-badge { display: block; width: min(100%, 264px); height: auto; margin-block: 1.3rem; }

@@ -1,6 +1,6 @@
 .campaign-hero {
   display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, .8fr);
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
   align-items: center;
   gap: clamp(2rem, 5vw, 5rem);
   padding-block: clamp(2.5rem, 5.5vw, 6rem);
@@ -54,13 +54,15 @@
 .campaign-button:hover { background: #29543c; }
 .campaign-link, .plan-steps a, .inline-resource { text-decoration: underline; text-underline-offset: .24em; text-decoration-thickness: 1px; }
 .campaign-link:hover, .inline-resource:hover { color: #9d3625; }
-.campaign-gemmy {
+.campaign-sticker {
   display: block;
   justify-self: center;
-  width: clamp(12rem, 22vw, 19rem);
+  width: clamp(14rem, 30vw, 28rem);
   max-width: 100%;
 }
-.campaign-gemmy img { display: block; width: 100%; height: auto; }
+.campaign-sticker img { display: block; width: 100%; height: auto; }
+.gemmy-story { display: grid; grid-template-columns: clamp(4rem, 6.5vw, 6.2rem) minmax(0, 1fr); align-items: start; gap: 1rem; margin-top: 1.35rem; }
+.gemmy-story img { width: 100%; height: auto; }
 .campaign-plan { padding-block: clamp(3rem, 5.8vw, 6.5rem); background: #183e30; color: #fff8e8; }
 .plan-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 7.5rem); }
 .plan-intro .campaign-kicker { color: #edd29a; }
@@ -117,8 +119,8 @@
 
 @media (max-width: 700px) {
   .campaign-hero {
-    grid-template-columns: minmax(0, 1fr) clamp(4.8rem, 22vw, 8rem);
-    grid-template-areas: "kicker gemmy" "title gemmy" "lead lead" "story story" "actions actions";
+    grid-template-columns: minmax(0, 1fr) clamp(5.8rem, 26vw, 10.5rem);
+    grid-template-areas: "kicker kicker" "title sticker" "lead sticker" "story story" "actions actions";
     gap: 0;
     padding-block: 1.4rem 1.9rem;
   }
@@ -128,12 +130,12 @@
     grid-area: title;
     margin: .6rem 0 .75rem;
   }
-  .campaign-lead { grid-area: lead; margin-top: .65rem; }
+  .campaign-lead { grid-area: lead; margin-right: .35rem; }
   .campaign-actions { grid-area: actions; gap: .3rem .9rem; margin: .85rem 0 1.05rem; }
   .campaign-actions a { min-height: 44px; display: inline-flex; align-items: center; }
   .campaign-button { padding: .65rem .85rem; }
   .campaign-ask { grid-area: story; margin: 1rem 0 0; max-width: 52ch; font-size: 1rem; line-height: 1.5; }
-  .campaign-gemmy { grid-area: gemmy; align-self: center; width: 100%; }
+  .campaign-sticker { grid-area: sticker; align-self: center; width: 100%; }
   .campaign-footer nav { gap: .15rem 1.15rem; }
   .campaign-footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
 }
@@ -159,7 +161,7 @@
   letter-spacing: -.05em;
   text-transform: none;
 }
-.campaign-copy h1 em { letter-spacing: -.055em; }
+.campaign-copy h1 em { display: inline-block; letter-spacing: -.055em; }
 .campaign-lead { font-size: clamp(1.08rem, .94rem + .65vw, 1.42rem); line-height: 1.45; }
 .campaign-copy .campaign-ask { font-size: var(--body-size); line-height: 1.55; }
 .plan-intro h2, .section-heading h2, .faq-heading h2, .closing-grid h2 {
