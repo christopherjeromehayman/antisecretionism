@@ -7,7 +7,7 @@ function updateEmail() {
 }
 function personalize() {
   const item = product.value.trim() || 'your product';
-  draft.value = `Hello, I’d love to know whether ${item} meets the anti-secretionist ingredient standard. I eat meat and plants and skip eggs, dairy, honey, and the other ingredients listed at ${location.origin}/retail. Would you review the recipe and, if it qualifies, consider adding “Anti-secretionist” to the packaging and online listing? That would help shoppers like me find it, buy it, and recommend it. Thank you!`;
+  draft.value = `Hi! I’m wondering whether ${item} is made without dairy, eggs, honey, or the other ingredients listed at ${location.origin}/beyond. If you’ve checked the recipe and it fits, would you add “No Secretions” beside its name online or on the package? It would make it easier for me to spot when I shop. Thanks!`;
   updateEmail();
 }
 personalize();
