@@ -173,3 +173,114 @@
 .petition-sheet ol { padding-left: 1.4rem; }
 .petition-sheet li { padding-left: .4rem; }
 .petition-sheet li::marker { color: #8c3f26; font-weight: 700; }
+
+@media (max-width: 700px) {
+  .campaign-hero {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "kicker" "title" "lead" "actions" "sample" "story";
+    gap: 0;
+    padding-block: 1.4rem 1.9rem;
+  }
+  .campaign-copy { display: contents; }
+  .campaign-copy .campaign-kicker { grid-area: kicker; font-size: .75rem; }
+  .campaign-copy h1 {
+    grid-area: title;
+    margin: .6rem 0 .75rem;
+  }
+  .campaign-lead { grid-area: lead; }
+  .campaign-actions { grid-area: actions; gap: .3rem .9rem; margin: .85rem 0 1.05rem; }
+  .campaign-actions a { min-height: 44px; display: inline-flex; align-items: center; }
+  .campaign-button { padding: .65rem .85rem; }
+  .campaign-ask { grid-area: story; margin: 1rem 0 0; max-width: 52ch; font-size: 1rem; line-height: 1.5; }
+  .menu-scene { grid-area: sample; display: block; padding: .75rem; border-radius: 6px; }
+  .gemmy-lookout {
+    position: absolute;
+    right: 1rem;
+    top: .45rem;
+    width: clamp(5.7rem, 24vw, 7.2rem);
+    height: auto;
+    padding: 0;
+    pointer-events: none;
+  }
+  .gemmy-lookout img { width: 100%; height: auto; }
+  .sample-menu {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .sample-heading {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: .35rem;
+    min-height: clamp(7.15rem, 30vw, 9rem);
+    padding: .25rem calc(clamp(5.7rem, 24vw, 7.2rem) + 1rem) .45rem .45rem;
+  }
+  .sample-heading h2 { font-size: clamp(1.8rem, 7.4vw, 2.5rem); }
+  .sample-heading > span { color: var(--ink); font-size: .875rem; }
+  .sample-body {
+    position: relative;
+    padding: .7rem .75rem .8rem;
+    background: #fff9e9;
+    border: 1px solid #82917a;
+    border-top: 3px solid var(--ink);
+    box-shadow: 2px 3px 0 #193d2d26;
+  }
+  .sample-filter { margin: 0; padding: .6rem; }
+  .sample-menu li { padding: .65rem 0; }
+  .sample-menu li span { font-size: .875rem; }
+  .campaign-footer nav { gap: .15rem 1.15rem; }
+  .campaign-footer nav a { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+@media (max-width: 620px) {
+  .section-intro, .faq-list summary, .faq-list p { font-size: 1rem; }
+  .filter { min-height: 44px; font-size: .875rem; }
+  .results-count, .guide-note { font-size: .8125rem; }
+  .food-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); }
+  .food-card { min-height: 0; padding: .85rem 1rem; }
+  .food-card-header { flex-direction: row; align-items: center; flex-wrap: wrap; gap: .35rem .6rem; margin-bottom: .4rem; }
+  .food-card h3 { font-size: 1.5rem; }
+  .food-card p, .meal-panel > p:not(.meal-swap) { font-size: 1rem; }
+  .status { font-size: .75rem; letter-spacing: .02em; }
+  .ingredient-list > span, .meal-swap { font-size: .875rem; }
+  .meal-tab { padding-block: .95rem; font-size: 1.35rem; }
+  .meal-panel { min-height: 0; padding: 1.25rem; }
+}
+
+.campaign-copy h1 {
+  font-size: clamp(2.45rem, 6.1vw, 5.65rem);
+  line-height: .99;
+  letter-spacing: -.05em;
+  text-transform: none;
+}
+.campaign-copy h1 em { letter-spacing: -.055em; }
+.campaign-lead { font-size: clamp(1.08rem, .94rem + .65vw, 1.42rem); line-height: 1.45; }
+.campaign-copy .campaign-ask { font-size: var(--body-size); line-height: 1.55; }
+.plan-intro h2, .section-heading h2, .faq-heading h2, .closing-grid h2 {
+  font-family: HouseSans, Arial, sans-serif;
+  font-size: var(--section-title);
+  line-height: 1.04;
+  letter-spacing: -.045em;
+  text-transform: none;
+}
+.plan-intro h2 em, .section-heading h2 .serif-accent { letter-spacing: -.05em; }
+.section-intro, .food-card p, .faq-list p, .meal-panel > p:not(.meal-swap) { font-size: var(--body-size); line-height: 1.55; }
+.faq-list summary { font-size: var(--body-size); line-height: 1.35; }
+.food-card-header { flex-wrap: wrap; }
+.status { font-size: .75rem; letter-spacing: .025em; }
+.food-card h3 { font-size: clamp(1.45rem, 1.25rem + .6vw, 1.85rem); }
+.petition-sheet h1 { font-size: clamp(2.5rem, 1.8rem + 4.2vw, 4.8rem); text-transform: none; }
+@media (max-width: 700px) {
+  .campaign-copy h1 { font-size: clamp(2.45rem, 11.25vw, 4rem); }
+  .campaign-lead { font-size: clamp(1.0625rem, 4.5vw, 1.2rem); }
+  .campaign-actions { column-gap: .85rem; }
+  .campaign-actions a { font-size: .9375rem; }
+  .section-heading, .guide-heading { gap: .65rem; margin-bottom: 1.25rem; }
+  .section-space { padding-block: 2.75rem; }
+  .faq-section { gap: 1.25rem; }
+}

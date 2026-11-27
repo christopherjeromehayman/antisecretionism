@@ -110,19 +110,6 @@ mealTabs.forEach((tab,index) => {
   });
 });
 
-const menuToggle = document.querySelector('.menu-toggle');
-const mobileNav = document.getElementById('mobile-nav');
-function closeMenu(){menuToggle.setAttribute('aria-expanded','false');menuToggle.setAttribute('aria-label','Open navigation');mobileNav.hidden=true;}
-menuToggle.addEventListener('click',() => {
-  const open=menuToggle.getAttribute('aria-expanded')==='true';
-  menuToggle.setAttribute('aria-expanded',String(!open));
-  menuToggle.setAttribute('aria-label',open?'Open navigation':'Close navigation');
-  mobileNav.hidden=open;
-});
-mobileNav.querySelectorAll('a').forEach(link=>link.addEventListener('click',closeMenu));
-document.addEventListener('keydown',event=>{if(event.key==='Escape'&&!mobileNav.hidden){closeMenu();menuToggle.focus();}});
-window.matchMedia('(min-width:621px)').addEventListener('change',event=>{if(event.matches)closeMenu();});
-
 const copyButton=document.getElementById('copy-preferences');
 const copyStatus=document.getElementById('copy-status');
 copyButton.addEventListener('click',async()=>{

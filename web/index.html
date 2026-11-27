@@ -19,7 +19,7 @@
   <script src="/app.js" defer></script>
   <link rel="stylesheet" href="/club.css">
   <link rel="stylesheet" href="/campaign.css">
-</head>
+<script defer src="/navigation.js"></script></head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
@@ -28,13 +28,12 @@
         <img class="brand-mark" src="/assets/gemmy-mark.png?v=lookout" width="50" height="50" alt="">
         <span>ANTI-<br>SECRETIONIST<span class="wordmark-dot"><svg class="burst" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12.00,1.00 13.76,7.75 19.78,4.22 16.25,10.24 23.00,12.00 16.25,13.76 19.78,19.78 13.76,16.25 12.00,23.00 10.24,16.25 4.22,19.78 7.75,13.76 1.00,12.00 7.75,10.24 4.22,4.22 10.24,7.75"/></svg></span></span>
       </a>
-      <nav class="desktop-nav" aria-label="Main navigation">
+      <a class="nav-cta" href="/checker">Check a label</a>
+      <button class="nav-disclosure" type="button" aria-expanded="false" aria-controls="main-links" hidden><span aria-hidden="true" class="nav-lines"></span>Menu</button>
+      <nav id="main-links" class="desktop-nav" aria-label="Main navigation">
         <a href="/gemmy">Meet Gemmy</a><a href="/petition#restaurant-pilot">For restaurants</a><a href="#food-guide">Food guide</a><a href="/journal">Field notes</a>
       </nav>
-      <a class="nav-cta" href="/checker">Check a label</a>
-      <button class="menu-toggle" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation"><span></span><span></span></button>
     </div>
-    <nav id="mobile-nav" class="mobile-nav" aria-label="Mobile navigation" hidden><a href="/gemmy">Meet Gemmy</a><a href="/petition#restaurant-pilot">For restaurants</a><a href="#food-guide">Food guide</a><a href="/journal">Field notes</a><a href="/checker">Check a label</a></nav>
   </header>
   <main id="main">
     <section id="top" class="campaign-hero shell" aria-labelledby="campaign-title">
@@ -45,19 +44,21 @@
         <p class="campaign-ask">That’s Gemmy with the binoculars. She’s looking for a place that serves meat and vegetables without butter, bread without milk, and pie without glaze. We want families to find those dishes with one <strong>Anti-Secretionist Friendly</strong> menu filter.</p>
         <div class="campaign-actions">
           <a class="campaign-button" href="#menu">Find a family meal</a>
-          <a class="campaign-link" href="/petition">Sign the menu petition</a>
+          <a class="campaign-link" href="/petition">Sign the petition</a>
         </div>
       </div>
       <div class="menu-scene">
         <div class="gemmy-lookout"><img src="/assets/gemmy-lookout-logo.png" width="582" height="707" fetchpriority="high" alt="Gemmy Lookout Patch. Gemmy looks through binoculars above her name in navy lettering."></div>
         <section class="sample-menu" aria-labelledby="sample-heading">
           <div class="sample-heading"><h2 id="sample-heading">Sample menu</h2><span id="sample-count" aria-live="polite">2 of 3 dishes</span></div>
-          <label class="sample-filter"><span>Anti-secretionist friendly</span><input id="sample-toggle" type="checkbox" role="switch" checked aria-controls="sample-items" disabled><span class="sample-switch" aria-hidden="true"></span></label>
-          <ul id="sample-items">
-            <li><strong>Grilled steak</strong><span>Olive oil &amp; sea salt</span></li>
-            <li data-unmatched hidden><strong>Buttermilk chicken</strong><span>Buttermilk marinade</span></li>
-            <li><strong>White bean salad</strong><span>Lemon &amp; herbs</span></li>
-          </ul>
+          <div class="sample-body">
+            <label class="sample-filter"><span>Anti-secretionist friendly</span><input id="sample-toggle" type="checkbox" role="switch" checked aria-controls="sample-items" disabled><span class="sample-switch" aria-hidden="true"></span></label>
+            <ul id="sample-items">
+              <li><strong>Grilled steak</strong><span>Olive oil &amp; sea salt</span></li>
+              <li data-unmatched hidden><strong>Buttermilk chicken</strong><span>Buttermilk marinade</span></li>
+              <li><strong>White bean salad</strong><span>Lemon &amp; herbs</span></li>
+            </ul>
+          </div>
         </section>
       </div>
     </section>
@@ -79,8 +80,7 @@
       </div>
     </section>
     <section id="food-guide" class="food-guide shell section-space">
-      <div class="section-kicker"><span>THE FOOD GUIDE</span><span class="line"></span></div>
-      <div class="section-heading guide-heading"><div><h2>DOES IT MAKE<br><span class="serif-accent">the plate?</span></h2></div><p class="section-intro">Look up a food or <a class="inline-resource" href="/checker">check an ingredient list</a>.</p></div>
+      <div class="section-heading guide-heading"><div><h2>Food guide</h2></div><p class="section-intro">Look up a food or <a class="inline-resource" href="/checker">check an ingredient list</a>.</p></div>
       <div class="guide-controls">
         <div class="filter-tabs" role="group" aria-label="Filter foods"><button class="filter active" data-filter="all" aria-pressed="true">All foods</button><button class="filter" data-filter="in" aria-pressed="false">On the plate</button><button class="filter" data-filter="out" aria-pressed="false">Off the menu</button><button class="filter" data-filter="check" aria-pressed="false">Check first</button></div>
         <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><span class="sr-only">Search the food guide</span><input id="food-search" type="search" placeholder="Find a food…" autocomplete="off"></label>
@@ -92,14 +92,13 @@
     </section>
 
     <section id="menu" class="menu-section shell section-space">
-      <div class="section-kicker"><span>MEAL IDEAS</span><span class="line"></span></div>
-      <div class="section-heading"><div><h2>WHAT’S FOR<br><span class="serif-accent">dinner?</span></h2></div><p class="section-intro">Pick a dish to see what goes in it. Let everyone at the table choose their own toppings.</p></div>
+      <div class="section-heading"><div><h2>What’s for <span class="serif-accent">dinner?</span></h2></div><p class="section-intro">Pick a dish to see what goes in it. Let everyone at the table choose their own toppings.</p></div>
       <div class="meal-layout"><div class="meal-selector" role="tablist" aria-label="Meal ideas"><button id="meal-tab-0" role="tab" aria-selected="true" aria-controls="meal-panel" data-meal="0" class="meal-tab active"><span>01</span> The steak-night plate <i class="arrow-up-right" aria-hidden="true">↗</i></button><button id="meal-tab-1" role="tab" aria-selected="false" aria-controls="meal-panel" data-meal="1" tabindex="-1" class="meal-tab"><span>02</span> White beans on toast <i class="arrow-up-right" aria-hidden="true">↗</i></button><button id="meal-tab-2" role="tab" aria-selected="false" aria-controls="meal-panel" data-meal="2" tabindex="-1" class="meal-tab"><span>03</span> The chicken rice bowl <i class="arrow-up-right" aria-hidden="true">↗</i></button><button id="meal-tab-3" role="tab" aria-selected="false" aria-controls="meal-panel" data-meal="3" tabindex="-1" class="meal-tab"><span>04</span> The maple morning <i class="arrow-up-right" aria-hidden="true">↗</i></button></div><article class="meal-panel" id="meal-panel" role="tabpanel" aria-labelledby="meal-tab-0" tabindex="0"><span class="meal-tag" id="meal-tag">DINNER, SORTED</span><h3 id="meal-name">The steak-night plate.</h3><p id="meal-description">A good steak, crisp potatoes, and something green. Finish with olive oil, lemon, and a generous handful of herbs.</p><div class="ingredient-list" id="meal-ingredients"><span>Steak</span><span>Potatoes</span><span>Green beans</span><span>Olive oil</span><span>Lemon</span></div><p class="meal-swap" id="meal-swap">The house swap: olive oil takes the place of butter.</p><span class="meal-star" aria-hidden="true"><svg class="burst" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12.00,1.00 13.76,7.75 19.78,4.22 16.25,10.24 23.00,12.00 16.25,13.76 19.78,19.78 13.76,16.25 12.00,23.00 10.24,16.25 4.22,19.78 7.75,13.76 1.00,12.00 7.75,10.24 4.22,4.22 10.24,7.75"/></svg></span></article></div>
     </section>
     <section class="faq-section shell">
-      <div class="faq-heading"><p class="eyebrow">FAIR QUESTIONS</p><h2>A LITTLE<br><span class="serif-accent">clarity.</span></h2></div><div class="faq-list"><details><summary>So, is this an actual diet?<span aria-hidden="true">+</span></summary><p>We call this way of eating <a href="/what-is-anti-secretionism">anti-secretionism</a>. Someone who follows it can say, “I’m an anti-secretionist. I eat meat and skip dairy, honey and eggs.”</p></details><details><summary>Does dairy include butter and cheese?<span aria-hidden="true">+</span></summary><p>Yes. Milk, butter, cheese, cream, dairy yogurt, ghee, whey, and other dairy ingredients are off the menu.</p></details><details><summary>What about plant milk and maple syrup?<span aria-hidden="true">+</span></summary><p>They’re welcome. Choose versions without eggs, dairy, or honey. Plant-based yogurt and butter alternatives follow the same rule.</p></details><details><summary>What do I say at a restaurant?<span aria-hidden="true">+</span></summary><p>“I eat meat and plants. I skip eggs, dairy, and honey. Could you cook mine in oil and check the breading, sauce, and glaze?” You can copy that explanation below.</p></details><details><summary>Can I support this if I eat dairy or honey?<span aria-hidden="true">+</span></summary><p>Absolutely. You can love both and still want your friends to find a meal they can order. <a href="/petition">Add your name to the menu petition.</a></p></details></div>
+      <div class="faq-heading"><h2>Common questions</h2></div><div class="faq-list"><details><summary>So, is this an actual diet?<span aria-hidden="true">+</span></summary><p>We call this way of eating <a href="/what-is-anti-secretionism">anti-secretionism</a>. Someone who follows it can say, “I’m an anti-secretionist. I eat meat and skip dairy, honey and eggs.”</p></details><details><summary>Does dairy include butter and cheese?<span aria-hidden="true">+</span></summary><p>Yes. Milk, butter, cheese, cream, dairy yogurt, ghee, whey, and other dairy ingredients are off the menu.</p></details><details><summary>What about plant milk and maple syrup?<span aria-hidden="true">+</span></summary><p>They’re welcome. Choose versions without eggs, dairy, or honey. Plant-based yogurt and butter alternatives follow the same rule.</p></details><details><summary>What do I say at a restaurant?<span aria-hidden="true">+</span></summary><p>“I eat meat and plants. I skip eggs, dairy, and honey. Could you cook mine in oil and check the breading, sauce, and glaze?” You can copy that explanation below.</p></details><details><summary>Can I support this if I eat dairy or honey?<span aria-hidden="true">+</span></summary><p>Absolutely. You can love both and still want your friends to find a meal they can order. <a href="/petition">Add your name to the menu petition.</a></p></details></div>
     </section>
-    <section class="closing-section"><div class="shell closing-grid"><div><p class="eyebrow">YOUR NEXT DINNER INTRODUCTION</p><h2>“I’M AN<br>ANTI-SECRETIONIST.”</h2><p>A note you can share with the kitchen.</p></div><div class="copy-card"><span class="copy-label">THE SHORT VERSION</span><p id="preference-text">I eat meat and plants. I skip eggs, dairy, and honey. Could you cook mine in oil and check the breading, sauce, and glaze?</p><button id="copy-preferences" class="button button-cream">Copy my food preferences <span class="arrow-up-right" aria-hidden="true">↗</span></button><p id="copy-status" role="status" aria-live="polite"></p></div></div></section>
+    <section class="closing-section"><div class="shell closing-grid"><div><p class="eyebrow">At the restaurant</p><h2>“I’m an<br>anti-<wbr>secretionist.”</h2><p>A note you can share with the kitchen.</p></div><div class="copy-card"><span class="copy-label">THE SHORT VERSION</span><p id="preference-text">I eat meat and plants. I skip eggs, dairy, and honey. Could you cook mine in oil and check the breading, sauce, and glaze?</p><button id="copy-preferences" class="button button-cream">Copy my food preferences <span class="arrow-up-right" aria-hidden="true">↗</span></button><p id="copy-status" role="status" aria-live="polite"></p></div></div></section>
   </main>
   <footer class="campaign-footer shell">
     <a class="footer-brand" href="#top">Anti-Secretionist</a>
