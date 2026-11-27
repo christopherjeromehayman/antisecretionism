@@ -78,17 +78,19 @@
 .item-label-art { display: block; justify-self: center; width: min(100%, 15rem); height: auto; }
 .item-label-copy h1 { font: 700 var(--section-title)/1.04 HouseSans, sans-serif; letter-spacing: -.045em; }
 .item-label-copy h1 em { font: italic 400 1.03em/1 HouseSerif, Georgia, serif; }
-.item-label-slogans { margin-top: .7rem; font-size: clamp(1.1rem, 1rem + .4vw, 1.4rem); line-height: 1.35; }
+.item-label-slogans { margin-top: .85rem; max-width: 54ch; font-size: var(--body-size); line-height: 1.5; }
+.item-label-slogans p + p { margin-top: .7rem; }
+.origin-link { display: inline-block; white-space: nowrap; font-weight: 700; }
 .item-label-guide { margin-top: .85rem; max-width: 54ch; font-size: var(--body-size); line-height: 1.55; }
 .item-label .campaign-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; }
 @media (max-width: 700px) {
   .item-label-layout {
     grid-template-columns: minmax(0, 1fr) clamp(4.8rem, 24vw, 8rem);
-    grid-template-areas: "title art" "slogans art" "guide guide" "link link";
+    grid-template-areas: "title art" "slogans slogans" "guide guide" "link link";
     gap: 0 .8rem;
   }
   .item-label-copy { display: contents; }
-  .item-label-copy h1 { grid-area: title; align-self: end; }
+  .item-label-copy h1 { grid-area: title; align-self: center; }
   .item-label-art { grid-area: art; width: 100%; }
   .item-label-slogans { grid-area: slogans; align-self: start; }
   .item-label-guide { grid-area: guide; margin-top: 1rem; }
