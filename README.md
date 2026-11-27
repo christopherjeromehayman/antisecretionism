@@ -16,6 +16,10 @@ The build includes the pages, artwork, sitemap and crawler rules in `dist/server
 
 Set `CUSTOM_DOMAIN_LIVE=yes` on Sites after the bare domain serves the site over HTTPS. Until then, the platform address keeps its own discovery URLs. Once enabled, public page requests on the platform address redirect to the same path on the purchased domain.
 
+## Add a verified Gemmy menu
+
+The homepage ZIP finder reads the same reviewed `web/movement-links.json` feed as the movement page. For a public restaurant menu that visibly displays Gemmy, use `business` for both `kind` and `origin`, set `url` to the menu, and add a `gemmyLocations` array to that entry. Each confirmed location needs `name`, a full display `address` including city, state and ZIP, and a five-digit `zip` string (keep leading zeroes). For a menu with no public publication date, omit `published` and use `verifiedOn` with the YYYY-MM-DD date you saw Gemmy on that menu. The movement page identifies this as the menu verification date. Continue using the actual `published` date for dated articles and posts. Include only locations covered by that menu. Remove locations when the badge disappears. Other coverage and dish stickers can stay in the feed without location metadata.
+
 ## Revenue launch
 1. Use an owned domain accepted by Google AdSense. Connect that domain to the public site, then add it in AdSense under Sites. Complete the account and payment details yourself. https://support.google.com/adsense/answer/7584263
 2. Set ADSENSE_PUBLISHER in Sites to the public publisher ID in the form pub- followed by 16 digits. The Worker serves the verification meta tag and /ads.txt. Request site review.
