@@ -1,4 +1,6 @@
-const options = new Set(['petition-platform-label','hat','shirt','stickers','grocer','brand']);
+const petitionChoice = 'petition-platform-label';
+const petitionReceipt = 'petition-browser-receipt';
+const options = new Set([petitionChoice,'hat','shirt','stickers','grocer','brand']);
 const json=(data,status=200)=>Response.json(data,{status,headers:{'cache-control':'no-store'}});
 function publisher(env){return /^pub-\d{16}$/.test(env.ADSENSE_PUBLISHER||'')?env.ADSENSE_PUBLISHER:null}
 const legacyBrandRoutes = new Map([
@@ -10,6 +12,38 @@ const legacyBrandRoutes = new Map([
   ['/assets/mark.svg', '/assets/gemmy-mark.png'],
   ['/favicon.ico', '/assets/gemmy-mark.png']
 ]);
+// A receipt lets the same browser recognize a signature made while signed in.
+function petitionBrowser(req) {
+  const id = req.headers.get('X-Petition-Browser');
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(id || '')
+    ? 'petition-browser:' + id.toLowerCase() : null;
+}
+
+async function recordPetition(db, account, browser) {
+  const signer = account || browser;
+  const signature = db.prepare(
+    'INSERT OR IGNORE INTO support(visitor, choice) SELECT ?, ? WHERE NOT EXISTS ' +
+    '(SELECT 1 FROM support WHERE visitor IN (?, ?) AND choice IN (?, ?))'
+  ).bind(signer, petitionChoice, account, browser, petitionChoice, petitionReceipt);
+  if (account && browser) {
+    const receipt = db.prepare('INSERT OR IGNORE INTO support(visitor, choice) VALUES (?, ?)')
+      .bind(browser, petitionReceipt);
+    await db.batch([signature, receipt]);
+  } else {
+    await signature.run();
+  }
+}
+
+async function supportState(db, account, browser) {
+  const count = db.prepare('SELECT COUNT(*) AS total FROM support WHERE choice = ?').bind(petitionChoice);
+  const choices = db.prepare(
+    'SELECT choice FROM support WHERE visitor = ? AND choice != ? ' +
+    'UNION SELECT ? WHERE EXISTS ' +
+    '(SELECT 1 FROM support WHERE visitor = ? AND choice IN (?, ?))'
+  ).bind(account, petitionReceipt, petitionChoice, browser, petitionChoice, petitionReceipt);
+  const [totals, selected] = await db.batch([count, choices]);
+  return { total: totals.results[0].total, signedIn: Boolean(account), choices: selected.results.map(row => row.choice) };
+}
 export default {
  async fetch(req,env){
   const url=new URL(req.url), path=url.pathname;
@@ -39,19 +73,29 @@ export default {
       return json({signedIn:Boolean(visitor),mine:own?.kind??null,counts:Object.fromEntries(rows.results.map(row=>[row.kind,row.votes]))});
     }catch{return json({error:'Voting is temporarily unavailable'},503)}
   }
-  if(path==='/api/support'){
-    const visitor=req.headers.get('oai-authenticated-user-id');
-    try{
-      if(req.method==='POST'){
-        if(req.headers.get('origin')!==url.origin)return json({error:'Invalid origin'},403);
-        if(!visitor)return json({error:'Sign in first'},401);
-        const {choice}=await req.json(); if(!options.has(choice))return json({error:'Unknown choice'},400);
-        await env.DB.prepare('INSERT OR IGNORE INTO support(visitor,choice) VALUES (?,?)').bind(visitor,choice).run();
-      }else if(req.method!=='GET')return json({error:'Method not allowed'},405);
-      const count=await env.DB.prepare("SELECT COUNT(*) AS total FROM support WHERE choice='petition-platform-label'").first();
-      const choices=visitor?(await env.DB.prepare('SELECT choice FROM support WHERE visitor=?').bind(visitor).all()).results.map(row=>row.choice):[];
-      return json({total:count.total,signedIn:Boolean(visitor),choices});
-    }catch{return json({error:'The signup service is temporarily unavailable. Please try again.'},503)}
+  if (path === '/api/support') {
+    const account = req.headers.get('oai-authenticated-user-id');
+    const browser = petitionBrowser(req);
+    try {
+      if (req.method === 'POST') {
+        if (req.headers.get('origin') !== url.origin) return json({error:'Invalid origin'}, 403);
+        const payload = await req.json().catch(() => null);
+        const choice = payload?.choice;
+        if (!options.has(choice)) return json({error:'Unknown choice'}, 400);
+        if (choice === petitionChoice) {
+          if (!account && !browser) return json({error:'Refresh the petition and try again.'}, 400);
+          await recordPetition(env.DB, account, browser);
+        } else {
+          if (!account) return json({error:'Sign in first'}, 401);
+          await env.DB.prepare('INSERT OR IGNORE INTO support(visitor,choice) VALUES (?,?)').bind(account,choice).run();
+        }
+      } else if (req.method !== 'GET') {
+        return json({error:'Method not allowed'}, 405);
+      }
+      return json(await supportState(env.DB, account, browser));
+    } catch {
+      return json({error:'The signup service is temporarily unavailable. Please try again.'}, 503);
+    }
   }
   if(!['GET','HEAD'].includes(req.method))return new Response(null,{status:405});
   const brandRedirect = legacyBrandRoutes.get(path);
