@@ -1,12 +1,13 @@
 'use strict';
 
 const foods = [
-  {name:'Steak',status:'in',note:'Bring on the steak. Cook with oil instead of butter.',keywords:'beef meat burger ribeye sirloin'},
+  {name:'Steak',status:'in',card:document.getElementById('steak'),keywords:'beef meat burger ribeye sirloin butter olive oil'},
+  {name:'Bread',status:'check',card:document.getElementById('sourdough'),keywords:'bread toast sourdough brioche bun bakery pastry bagel olive oil dipping'},
+  {name:'Plant milk',status:'in',card:document.getElementById('plant-milk'),keywords:'oat milk almond milk soy milk coconut milk coconutmilk plant based dairy free so delicious organic unsweetened original'},
   {name:'Eggs',status:'out',note:'Skip whole eggs, whites, yolks, and egg-based sauces. Check baked goods for egg wash.',keywords:'egg yolk white albumen ovalbumin powdered dried breakfast omelette mayonnaise mayo'},
   {name:'Fish & chicken',status:'in',note:'Both are welcome. Keep an eye on sauces and marinades.',keywords:'salmon tuna poultry turkey pork seafood shrimp protein'},
   {name:'Fruit & veg',status:'in',note:'A full seat at the table. Dress them with olive oil and lemon.',keywords:'vegetables fruit broccoli avocado potato potatoes apple banana greens berries'},
   {name:'Grains & beans',status:'in',note:'Rice, oats, lentils, beans, and more. Check any added extras.',keywords:'grain bean lentil chickpea oats oatmeal rice pasta nuts seeds tofu soy'},
-  {name:'Plant milk',status:'in',note:'Oat, soy, almond: choose versions without eggs, dairy, or honey.',keywords:'oat milk almond milk soy milk coconut milk plant based dairy free'},
   {name:'Maple syrup',status:'in',note:'The house pick when you want something sweet.',keywords:'maple sugar syrup sweet sweetener'},
   {name:'Olive oil',status:'in',note:'For the pan, the salad, and the finishing drizzle.',keywords:'vegetable oil avocado oil coconut oil fat'},
   {name:'Milk & cream',status:'out',note:'Dairy is off the menu. That includes milk-based ingredients.',keywords:'dairy cow goat sheep milk cream whey casein lactose'},
@@ -15,7 +16,6 @@ const foods = [
   {name:'Honey',status:'out',note:'A clear house no. Check dressings, marinades, and glazes.',keywords:'honey bee bees honeycomb'},
   {name:'Beeswax',status:'out',note:'This bee-made wax can turn up on coated sweets. Look for beeswax or E901.',keywords:'beeswax bee wax e901 e 901 coating candy'},
   {name:'Shellac',status:'out',note:'This glaze comes from lac insects. Look for shellac or E904 on coated candies.',keywords:'shellac lac e904 e 904 candy glaze coating'},
-  {name:'Bread',status:'check',note:'Recipes vary. Look for eggs, milk, butter, whey, or honey.',keywords:'bread toast sourdough brioche bun bakery pastry bagel'},
   {name:'Chocolate',status:'check',note:'Check the ingredients. “Dark” doesn’t settle the question.',keywords:'chocolate cocoa dark dessert sweet candy'},
   {name:'Sauces',status:'check',note:'Eggs, dairy, or honey can be part of the recipe. Ask what’s in it.',keywords:'sauce dressing marinade pesto curry glaze condiment mayonnaise mayo'},
   {name:'Granola',status:'check',note:'Some use honey; others don’t. Let the ingredients decide.',keywords:'granola cereal bar snack muesli'}
@@ -42,6 +42,10 @@ function renderFoods() {
   });
   const fragment = document.createDocumentFragment();
   filtered.forEach(food => {
+    if (food.card) {
+      fragment.append(food.card);
+      return;
+    }
     const article = element('article','food-card');
     const header = element('div','food-card-header');
     header.append(element('h3',null,food.name),element('span','status status-'+food.status,labels[food.status]));

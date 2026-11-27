@@ -55,6 +55,22 @@ a.inline-resource:hover, .label-dish-link:hover, .dish-order-link:hover { color:
 .restaurant-name { font-size: 1rem; line-height: 1.45; }
 .local-dish-notes > p:first-child { margin: 0; }
 .local-dish-notes .menu-source { margin: 0; font-size: .875rem; line-height: 1.45; }
+.gemmy-finder { border-bottom: 1px solid var(--line); padding-block: clamp(1.65rem, 3.2vw, 3.2rem); }
+.finder-layout { display: grid; max-width: 77rem; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem clamp(2rem, 8vw, 8rem); align-items: start; }
+.gemmy-finder h2 { margin: 0 0 .4em; font: 700 clamp(1.65rem, 2.6vw, 2.5rem)/1.1 HouseSans, sans-serif; letter-spacing: -.04em; }
+.gemmy-finder p { max-width: 48ch; line-height: 1.5; color: #405547; }
+.gemmy-finder label { display: block; font-weight: 700; margin-bottom: .4rem; }
+.finder-controls { display: flex; flex-wrap: wrap; gap: .5rem; }
+.finder-controls input, .finder-controls button { min-height: 46px; padding: .6rem .85rem; font: inherit; border-radius: 4px; }
+.finder-controls input { min-width: 0; width: 9rem; max-width: 100%; border: 1px solid #7b887a; background: var(--white); color: var(--ink); }
+.finder-controls button { border: 0; color: var(--white); background: var(--ink); font-weight: 700; cursor: pointer; }
+.finder-controls button:hover { background: #28513c; }
+.finder-submit { display: inline-block; padding: .6rem 0; font-size: .9375rem; text-decoration: underline; text-underline-offset: .2em; }
+.finder-result { margin-top: .9rem; }
+.finder-list { list-style: none; margin: .6rem 0 0; padding: 0; }
+.finder-list li { border-top: 1px solid var(--line); padding: .75rem 0; }
+.finder-list a { font-weight: 700; text-decoration: underline; text-underline-offset: .18em; }
+.finder-list span { display: block; color: #405547; line-height: 1.45; }
 .dish-label { display: grid; grid-template-columns: minmax(8rem, .55fr) minmax(0, 1.45fr); align-items: start; gap: 1rem clamp(1.5rem, 5vw, 5rem); max-width: 65rem; padding-block: clamp(2rem, 5vw, 5rem); }
 .dish-sticker { justify-self: center; width: min(100%, 11rem); }
 .dish-label h2 { margin-top: 0; }
@@ -91,7 +107,7 @@ a.inline-resource:hover, .label-dish-link:hover, .dish-order-link:hover { color:
   .dining-title h1 { font-size: clamp(2.65rem, 11.8vw, 4.8rem); margin-bottom: 0; }
   .dining-gemmy { width: 100%; max-width: 8.5rem; }
   .order-actions { column-gap: 1.1rem; }
-  .local-dish-layout { grid-template-columns: 1fr; gap: .8rem; }
+  .local-dish-layout, .finder-layout { grid-template-columns: 1fr; gap: .8rem; }
   .local-dish h2 { max-width: none; }
   .dish-label { grid-template-columns: minmax(0, 1fr) minmax(4.5rem, 18%); gap: .2rem 1rem; }
   .dish-label-copy { display: contents; }

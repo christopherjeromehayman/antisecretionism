@@ -77,6 +77,26 @@
       </div>
     </section>
 
+    <section id="find-gemmy" class="gemmy-finder" aria-labelledby="finder-title">
+      <div class="shell finder-layout">
+        <div>
+          <h2 id="finder-title">Find a Friend of Gemmy</h2>
+          <p>Enter your ZIP code to find friendly food options. We list kitchens in that ZIP that show Gemmy on their menu and welcome ingredient questions.</p>
+        </div>
+        <div>
+          <form action="/#find-gemmy" method="get" role="search" aria-labelledby="finder-title">
+            <label for="finder-zip">US ZIP code</label>
+            <div class="finder-controls">
+              <input id="finder-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" pattern="[0-9]{5}" maxlength="5" title="Enter a five-digit US ZIP code" placeholder="e.g. 95030" required>
+              <button type="submit">Find menus</button>
+            </div>
+          </form>
+          <!-- gemmy-matches -->
+          <a class="finder-submit" href="/menu-label#share-menu">Have Gemmy on your menu? Send it to us.</a>
+        </div>
+      </div>
+    </section>
+
     <section id="no-secretions" class="dish-label shell" aria-labelledby="sticker-heading">
       <img class="dish-sticker" src="/assets/no-secretions-sticker-small.png" width="576" height="576" loading="lazy" alt="No Secretions sticker with an udder, honeycomb, and egg inside a circle and slash.">
       <div class="dish-label-copy">
@@ -133,7 +153,20 @@
         <label class="search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 6 6"/></svg><span class="sr-only">Search the food guide</span><input id="food-search" type="search" placeholder="Find a food…" autocomplete="off"></label>
       </div>
       <p class="results-count" id="results-count" aria-live="polite"></p>
-      <div class="food-grid" id="food-grid"></div>
+      <div class="food-grid" id="food-grid">
+        <article class="food-card" id="steak">
+          <div class="food-card-header"><h3>Steak</h3><span class="status status-in">On the plate</span></div>
+          <p>We love steak. Here’s how we order it. “Please cook it without butter and skip the butter on top. Olive oil works for us.”</p>
+        </article>
+        <article class="food-card" id="sourdough">
+          <div class="food-card-header"><h3>Bread</h3><span class="status status-check">Check first</span></div>
+          <p>Sourdough is our family favorite. We check the loaf for dairy, eggs, and honey, then ask, “Hold the butter, please. Olive oil for dipping would be great.”</p>
+        </article>
+        <article class="food-card" id="plant-milk">
+          <div class="food-card-header"><h3>Plant milk</h3><span class="status status-in">On the plate</span></div>
+          <p>Oat, soy, almond, and coconut milk can all work. Choose one without dairy, eggs, or honey. Chris’s favorite is <a class="inline-resource" href="https://www.sodeliciousdairyfree.com/dairy-free-foods/plant-based-beverages/coconutmilk/organic-unsweetened-original-64oz/">So Delicious Organic Unsweetened Coconutmilk</a>.</p>
+        </article>
+      </div>
       <noscript><p>The interactive food guide needs JavaScript. The house rules still apply: meat and plants are in. Eggs, dairy, and honey are out. Check the ingredients in mixed foods.</p></noscript>
       <p class="guide-note"><span aria-hidden="true">↳</span> These are our house rules. For mixed foods, the ingredients decide.</p>
     </section>
