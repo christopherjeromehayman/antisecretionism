@@ -1,0 +1,20 @@
+.club-head{border-bottom:2px solid #173d2c;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 5vw;flex-wrap:wrap}.club-head>a,.club-head nav a{color:#173d2c;font-weight:700;text-decoration:none}.club-head nav{display:flex;gap:1.1rem;flex-wrap:wrap}.sheet{max-width:1020px;margin:auto;padding:clamp(2rem,6vw,6rem) 6vw;color:#173d2c}.sheet h1{font:900 clamp(2.8rem,7vw,6rem)/.98 Georgia,serif;letter-spacing:-.055em;margin:1rem 0 2rem;max-width:18ch}.sheet h2{font:bold clamp(1.6rem,4vw,2.4rem)/1.12 Georgia,serif;margin:2.1rem 0 .75rem}.sheet p,.sheet dd,.sheet blockquote{font-size:1.12rem;line-height:1.55;max-width:69ch;margin-bottom:1rem}.sheet dt{font-size:1.2rem}.sheet dd{margin-left:0}.sheet a,.club-links a{color:inherit;text-decoration:underline;text-underline-offset:.19em}.sheet input,.sheet textarea{display:block;width:100%;padding:1rem;font:inherit;background:#fffdf4;border:2px solid #173d2c;margin:.7rem 0}.sheet button,.club-cta{display:inline-block;margin:.4rem 0;border:0;border-radius:4px;background:#173d2c;color:white;padding:.85rem 1.1rem;font:inherit;font-weight:700;cursor:pointer}.sheet button:disabled{opacity:.7}.sheet figure{margin:0}.sheet img{max-width:100%;height:auto}.product-grid,.links-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:1.4rem}.links-grid a{display:block;padding:1rem 0;border-top:2px solid}.product-grid img{width:100%;border-radius:8px}.mascot{width:min(42%,270px);float:right;margin:0 0 1rem 1.4rem}.club-links{padding:3rem 0;color:#173d2c}.club-links h2{margin:0 0 1.2rem}.sheet blockquote,.shelf{border-left:6px solid #e6af39;padding:1rem 1.4rem;background:#f1e8c9}.shelf{max-width:32rem;margin:1rem 0}.shelf img{width:80px;float:right}.palette{display:flex;flex-wrap:wrap;gap:12px}.palette span{border:1px solid;padding:.6rem}.sheet footer{border-top:1px solid;margin-top:3rem;padding-top:1rem}.sheet [role=status]{min-height:1.5em}@media(max-width:540px){.mascot{width:40%}.club-head nav{gap:.8rem}}
+
+.hero-copy .petition-intro {
+  max-width: 38ch;
+  margin: 1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.breakfast-cartoon { margin: 2.5rem 0; }
+.breakfast-cartoon img { display: block; width: 100%; border: 2px solid #173d2c; }
+.breakfast-captions { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 1.5rem; margin-top: 1rem; }
+.breakfast-captions h3 { font: bold clamp(1.25rem, 3vw, 1.65rem)/1.12 Georgia, serif; margin: 0 0 .5rem; }
+@media (max-width: 640px) { .breakfast-captions { grid-template-columns: 1fr; gap: .5rem; } }
+
+.club-head .club-brand { display: inline-flex; gap: .5rem; align-items: center; }
+.club-brand img, img.brand-mark { object-fit: cover; border-radius: 50%; }
+img.brand-mark { height: 3.1rem; width: auto; }
+.sheet img.mascot { height: auto; max-width: 13rem; }
+.clear-mascot { clear: both; }
