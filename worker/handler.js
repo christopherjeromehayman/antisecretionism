@@ -1,6 +1,10 @@
 const petitionChoice = 'petition-platform-label';
 const petitionReceipt = 'petition-browser-receipt';
 const options = new Set([petitionChoice,'hat','shirt','stickers','grocer','brand']);
+const reachEvents = [
+  'intro_view', 'share_link_copied', 'share_sheet_completed',
+  'badge_code_copied', 'badge_referral', 'share_referral'
+];
 const json=(data,status=200)=>Response.json(data,{status,headers:{'cache-control':'no-store'}});
 function publisher(env){return /^pub-\d{16}$/.test(env.ADSENSE_PUBLISHER||'')?env.ADSENSE_PUBLISHER:null}
 const legacyBrandRoutes = new Map([
@@ -44,6 +48,49 @@ async function supportState(db, account, browser) {
   const [totals, selected] = await db.batch([count, choices]);
   return { total: totals.results[0].total, signedIn: Boolean(account), choices: selected.results.map(row => row.choice) };
 }
+
+async function reachMetrics(req, db, origin) {
+  if (req.method === 'GET') {
+    const { results } = await db.prepare(
+      'SELECT event, SUM(total) AS total FROM reach_daily GROUP BY event'
+    ).all();
+    const counts = Object.fromEntries(reachEvents.map(event => [event, 0]));
+    for (const row of results) counts[row.event] = row.total;
+    return json({ counts, asOf: new Date().toISOString() });
+  }
+  if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
+  if (req.headers.get('Origin') !== origin) return json({ error: 'Invalid origin' }, 403);
+  if (req.headers.get('Content-Type')?.split(';')[0].trim().toLowerCase() !== 'application/json') {
+    return json({ error: 'Use application/json' }, 415);
+  }
+
+  // These messages contain just one of the event names above.
+  let body = '';
+  const decoder = new TextDecoder();
+  let size = 0;
+  if (req.body) {
+    for await (const chunk of req.body) {
+      size += chunk.byteLength;
+      if (size > 128) return json({ error: 'Event message is too large' }, 413);
+      body += decoder.decode(chunk, { stream: true });
+    }
+  }
+  let event;
+  try {
+    const payload = JSON.parse(body + decoder.decode());
+    if (payload && Object.keys(payload).length === 1) event = payload.event;
+  } catch { /* A malformed message is handled as an unknown event below. */ }
+  if (!reachEvents.includes(event)) return json({ error: 'Invalid event' }, 400);
+
+  if (req.headers.get('Sec-GPC') === '1' || req.headers.get('DNT') === '1') {
+    return new Response(null, { status: 204, headers: { 'Cache-Control': 'no-store' } });
+  }
+  await db.prepare(
+    "INSERT INTO reach_daily(day, event, total) VALUES (date('now'), ?, 1) " +
+    'ON CONFLICT(day, event) DO UPDATE SET total = total + 1'
+  ).bind(event).run();
+  return new Response(null, { status: 204, headers: { 'Cache-Control': 'no-store' } });
+}
 export default {
  async fetch(req,env){
   const url=new URL(req.url), path=url.pathname;
@@ -53,6 +100,13 @@ export default {
   if (['GET','HEAD'].includes(req.method) && !path.startsWith('/api/') &&
       (url.hostname === 'www.antisecretionist.com' || (platformRequest && env.CUSTOM_DOMAIN_LIVE === 'yes'))) {
     return Response.redirect(domain + path + url.search, 301);
+  }
+  if (path === '/api/reach') {
+    try {
+      return await reachMetrics(req, env.DB, url.origin);
+    } catch {
+      return json({ error: 'Activity counts are temporarily unavailable' }, 503);
+    }
   }
   if(path==='/api/milk-poll'){
     const kinds=['coconut','oat','soy','almond','pea','rice','other'];
@@ -106,6 +160,7 @@ export default {
   if(!asset)return new Response('Page not found',{status:404});
   const [type,b64]=asset;
   let bytes=Uint8Array.from(atob(b64),c=>c.charCodeAt(0));
+  if (path === '/movement' || path === '/movement.html') bytes = await renderMovementPage(bytes);
   if (platformRequest && (type.startsWith('text/html') || path === '/sitemap.xml' || path === '/robots.txt')) {
     const page = new TextDecoder().decode(bytes).replaceAll(domain, platform);
     bytes = new TextEncoder().encode(page);
