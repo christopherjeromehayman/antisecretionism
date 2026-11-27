@@ -78,23 +78,35 @@
 .item-label-art { display: block; justify-self: center; width: min(100%, 15rem); height: auto; }
 .item-label-copy h1 { font: 700 var(--section-title)/1.04 HouseSans, sans-serif; letter-spacing: -.045em; }
 .item-label-copy h1 em { font: italic 400 1.03em/1 HouseSerif, Georgia, serif; }
-.item-label-slogans { margin-top: .85rem; max-width: 54ch; font-size: var(--body-size); line-height: 1.5; }
-.item-label-slogans p + p { margin-top: .7rem; }
+.item-label-body { max-width: 54ch; }
+.item-label-lead { margin-top: .8rem; font-size: clamp(1.1rem, 1rem + .45vw, 1.35rem); line-height: 1.45; }
+.item-label-body details { border: 0; }
+.order-note { margin: 1.2rem 0; }
+.order-note summary { width: fit-content; min-height: 44px; align-items: center; gap: .85rem; padding: .65rem 1rem; border-radius: 3px; color: var(--white); background: var(--ink); font-size: 1rem; }
+.order-note summary:hover { background: #29543c; }
+.order-note summary::after, .food-origins summary::before { content: ""; display: block; flex: none; width: .47em; height: .47em; border: solid currentColor; border-width: 0 2px 2px 0; transform: translateY(-.12em) rotate(45deg); }
+.order-note[open] summary::after, .food-origins[open] summary::before { transform: translateY(.12em) rotate(225deg); }
+.order-note-card { margin-top: .55rem; padding: 1.05rem 1.2rem; color: var(--ink); background: var(--cream); border-left: 3px solid var(--ink); }
+.order-note-card p { padding: 0; color: inherit; }
+.order-note-card #preference-text { font-size: 1.14rem; line-height: 1.5; }
+.order-note-card button { min-height: 44px; background: transparent; border: 0; padding: .5rem 0; margin-top: .3rem; font-weight: 700; }
+.order-note-card button[hidden] { display: none; }
+.order-note-card [role="status"] { font-size: .94rem; }
+.food-origins { margin-top: .5rem; }
+.food-origins summary { justify-content: flex-start; align-items: center; gap: .65rem; font-size: 1rem; min-height: 44px; padding: .55rem 0; }
+.food-origins p { margin: .45rem 0; padding: 0; font-size: var(--body-size); color: #405547; line-height: 1.55; }
 .origin-link { display: inline-block; white-space: nowrap; font-weight: 700; }
 .item-label-guide { margin-top: .85rem; max-width: 54ch; font-size: var(--body-size); line-height: 1.55; }
-.item-label .campaign-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; }
 @media (max-width: 700px) {
   .item-label-layout {
     grid-template-columns: minmax(0, 1fr) clamp(4.8rem, 24vw, 8rem);
-    grid-template-areas: "title art" "slogans slogans" "guide guide" "link link";
+    grid-template-areas: "title art" "body body";
     gap: 0 .8rem;
   }
   .item-label-copy { display: contents; }
   .item-label-copy h1 { grid-area: title; align-self: center; }
   .item-label-art { grid-area: art; width: 100%; }
-  .item-label-slogans { grid-area: slogans; align-self: start; }
-  .item-label-guide { grid-area: guide; margin-top: 1rem; }
-  .item-label .campaign-link { grid-area: link; justify-self: start; }
+  .item-label-body { grid-area: body; min-width: 0; }
 }
 .campaign-plan { padding-block: clamp(3rem, 5.8vw, 6.5rem); background: #183e30; color: #fff8e8; }
 .plan-layout { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 7.5rem); }
@@ -167,7 +179,8 @@
   .campaign-actions { grid-area: actions; gap: .3rem .9rem; margin: .85rem 0 1.05rem; }
   .campaign-actions a { min-height: 44px; display: inline-flex; align-items: center; }
   .campaign-button { padding: .65rem .85rem; }
-  .campaign-ask { grid-area: story; margin: 1rem 0 0; max-width: 52ch; font-size: 1rem; line-height: 1.5; }
+  .campaign-story { grid-area: story; }
+  .campaign-ask { margin: 1rem 0 0; max-width: 52ch; font-size: 1rem; line-height: 1.5; }
   .campaign-gemmy { grid-area: gemmy; align-self: center; width: 100%; }
   .campaign-footer nav { gap: .15rem 1.15rem; }
   .campaign-footer nav a { display: inline-flex; align-items: center; min-height: 44px; }

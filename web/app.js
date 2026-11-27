@@ -112,13 +112,12 @@ mealTabs.forEach((tab,index) => {
 
 const copyButton=document.getElementById('copy-preferences');
 const copyStatus=document.getElementById('copy-status');
+copyButton.hidden=false;
 copyButton.addEventListener('click',async()=>{
   const text=document.getElementById('preference-text').textContent;
   try{
     await navigator.clipboard.writeText(text);
-    copyStatus.textContent='Copied. Dinner just got easier.';
-    copyButton.firstChild.textContent='Copied to clipboard ';
-    setTimeout(()=>{copyButton.firstChild.textContent='Copy my food preferences ';},3000);
+    copyStatus.textContent='Order note copied.';
   }catch{
     const range=document.createRange();
     range.selectNodeContents(document.getElementById('preference-text'));
