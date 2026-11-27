@@ -15,18 +15,18 @@
   text-transform: uppercase;
 }
 .campaign-kicker::before { content: ""; width: 1.8rem; height: 2px; background: currentColor; }
-.campaign-copy h1, .plan-intro h2 {
+.campaign-copy h2, .plan-intro h2 {
   font: 700 clamp(4.3rem, 8.2vw, 8.5rem)/.91 Display, Impact, sans-serif;
   letter-spacing: -.045em;
   margin: .17em 0 .26em;
   text-transform: uppercase;
 }
-.campaign-copy h1 em, .plan-intro h2 em {
+.campaign-copy h2 em, .plan-intro h2 em {
   font: italic 400 1em/.94 HouseSerif, Georgia, serif;
   text-transform: none;
   letter-spacing: -.075em;
 }
-.campaign-copy h1 em { color: #a63b27; }
+.campaign-copy h2 em { color: #a63b27; }
 .campaign-lead {
   max-width: 35ch;
   font-size: clamp(1.18rem, 1.7vw, 1.68rem);
@@ -73,8 +73,8 @@
   gap: clamp(1.8rem, 4vw, 4rem);
 }
 .item-label-art { display: block; justify-self: center; width: min(100%, 15rem); height: auto; }
-.item-label-copy h2 { font: 700 var(--section-title)/1.04 HouseSans, sans-serif; letter-spacing: -.045em; }
-.item-label-copy h2 em { font: italic 400 1.03em/1 HouseSerif, Georgia, serif; }
+.item-label-copy h1 { font: 700 var(--section-title)/1.04 HouseSans, sans-serif; letter-spacing: -.045em; }
+.item-label-copy h1 em { font: italic 400 1.03em/1 HouseSerif, Georgia, serif; }
 .item-label-slogans { margin-top: .7rem; font-size: clamp(1.1rem, 1rem + .4vw, 1.4rem); line-height: 1.35; }
 .item-label-guide { margin-top: .85rem; max-width: 54ch; font-size: var(--body-size); line-height: 1.55; }
 .item-label .campaign-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: .4rem; }
@@ -85,7 +85,7 @@
     gap: 0 .8rem;
   }
   .item-label-copy { display: contents; }
-  .item-label-copy h2 { grid-area: title; align-self: end; }
+  .item-label-copy h1 { grid-area: title; align-self: end; }
   .item-label-art { grid-area: art; width: 100%; }
   .item-label-slogans { grid-area: slogans; align-self: start; }
   .item-label-guide { grid-area: guide; margin-top: 1rem; }
@@ -114,7 +114,7 @@
 @media (max-width: 700px) {
   .campaign-hero, .plan-layout { grid-template-columns: 1fr; }
   .campaign-hero { gap: 1.65rem; padding-block: 2.15rem 2.25rem; }
-  .campaign-copy h1 { font-size: clamp(4.45rem, 13.8vw, 6.1rem); }
+  .campaign-copy h2 { font-size: clamp(4.45rem, 13.8vw, 6.1rem); }
   .campaign-lead { max-width: 36ch; }
   .campaign-ask { margin-top: .8rem; }
   .campaign-actions { margin-top: 1.2rem; }
@@ -154,7 +154,7 @@
   }
   .campaign-copy { display: contents; }
   .campaign-copy .campaign-kicker { grid-area: kicker; font-size: .75rem; }
-  .campaign-copy h1 {
+  .campaign-copy h2 {
     grid-area: title;
     margin: .6rem 0 .75rem;
   }
@@ -183,13 +183,13 @@
   .meal-panel { min-height: 0; padding: 1.25rem; }
 }
 
-.campaign-copy h1 {
+.campaign-copy h2 {
   font-size: clamp(2.45rem, 6.1vw, 5.65rem);
   line-height: .99;
   letter-spacing: -.05em;
   text-transform: none;
 }
-.campaign-copy h1 em { letter-spacing: -.055em; }
+.campaign-copy h2 em { letter-spacing: -.055em; }
 .campaign-lead { font-size: clamp(1.08rem, .94rem + .65vw, 1.42rem); line-height: 1.45; }
 .campaign-copy .campaign-ask { font-size: var(--body-size); line-height: 1.55; }
 .plan-intro h2, .section-heading h2, .faq-heading h2, .closing-grid h2 {
@@ -207,7 +207,7 @@
 .food-card h3 { font-size: clamp(1.45rem, 1.25rem + .6vw, 1.85rem); }
 .petition-sheet h1 { font-size: clamp(2.5rem, 1.8rem + 4.2vw, 4.8rem); text-transform: none; }
 @media (max-width: 700px) {
-  .campaign-copy h1 { font-size: clamp(2.45rem, 11.25vw, 4rem); }
+  .campaign-copy h2 { font-size: clamp(2.45rem, 11.25vw, 4rem); }
   .campaign-lead { font-size: clamp(1.0625rem, 4.5vw, 1.2rem); }
   .campaign-actions { column-gap: .85rem; }
   .campaign-actions a { font-size: .9375rem; }

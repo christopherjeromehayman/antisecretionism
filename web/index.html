@@ -19,11 +19,11 @@
   <script src="/app.js" defer></script>
   <script type="module" src="/reach.js"></script>
   <link rel="stylesheet" href="/club.css">
-  <link rel="stylesheet" href="/campaign.css">
+  <link rel="stylesheet" href="/campaign.css?v=sticker-first">
 <script defer src="/navigation.js"></script></head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
-  <header class="site-header">
+  <header id="top" class="site-header">
     <div class="nav-wrap">
       <a class="wordmark" href="#top" aria-label="Anti-Secretionist home">
         <img class="brand-mark" src="/assets/gemmy-mark.png?v=lookout" width="50" height="50" alt="">
@@ -37,10 +37,22 @@
     </div>
   </header>
   <main id="main">
-    <section id="top" class="campaign-hero shell" aria-labelledby="campaign-title">
+    <section id="no-secretions" class="item-label" aria-labelledby="sticker-heading">
+      <div class="shell item-label-layout">
+        <img class="item-label-art" src="/assets/no-secretions-sticker-small.png" width="576" height="576" fetchpriority="high" alt="No Secretions sticker with an udder, honeycomb, and egg inside a circle and slash.">
+        <div class="item-label-copy">
+          <h1 id="sticker-heading">No <em>Secretions</em></h1>
+          <p class="item-label-slogans">Cow’s milk is for cow babies.<br>Honey is for bees.</p>
+          <p class="item-label-guide" data-movement-intro>We eat meat and plants. We skip dairy, honey, and eggs. A <strong>No Secretions</strong> sticker beside a dish means its maker has checked the whole recipe against <a class="inline-resource" href="/beyond">our ingredient guide</a>.</p>
+          <a class="campaign-link" href="/menu-label#no-secretions">Get the sticker</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="campaign-hero shell" aria-labelledby="campaign-title">
       <div class="campaign-copy">
         <p class="campaign-kicker">Dining out with Gemmy</p>
-        <h1 id="campaign-title">Put us on<br><em>the menu.</em></h1>
+        <h2 id="campaign-title">Put us on<br><em>the menu.</em></h2>
         <p class="campaign-lead">Imagine ordering dinner without having to ask if there’s milk in the bread or butter on the steak.</p>
         <p class="campaign-ask"><strong>See Gemmy on a menu? “We’ll help you find something you can eat.”</strong> That kitchen welcomes anti-secretionists. They’ll check the bread for milk or eggs, the glaze for honey, and whether your steak can be cooked in olive oil.</p>
         <div class="campaign-actions">
@@ -49,20 +61,8 @@
         </div>
       </div>
       <a class="campaign-gemmy" href="/menu-label#get-badge" aria-label="What the Gemmy welcome badge means">
-        <img src="/assets/gemmy-lookout-logo.png" width="582" height="707" fetchpriority="high" alt="Gemmy in pink sandals, looking through binoculars with one foot on a rock.">
+        <img src="/assets/gemmy-lookout-logo.png" width="582" height="707" loading="lazy" alt="Gemmy in pink sandals, looking through binoculars with one foot on a rock.">
       </a>
-    </section>
-
-    <section id="no-secretions" class="item-label" aria-labelledby="sticker-heading">
-      <div class="shell item-label-layout">
-        <img class="item-label-art" src="/assets/no-secretions-sticker-small.png" width="576" height="576" loading="lazy" alt="No Secretions sticker with an udder, honeycomb, and egg inside a circle and slash.">
-        <div class="item-label-copy">
-          <h2 id="sticker-heading">No <em>Secretions</em></h2>
-          <p class="item-label-slogans">Cow’s milk is for cow babies.<br>Honey is for bees.</p>
-          <p class="item-label-guide" data-movement-intro>We eat meat and plants. We skip dairy, honey, and eggs. A <strong>No Secretions</strong> sticker beside a dish means its maker has checked the whole recipe against <a class="inline-resource" href="/beyond">our ingredient guide</a>.</p>
-          <a class="campaign-link" href="/menu-label#no-secretions">Get the sticker</a>
-        </div>
-      </div>
     </section>
 
     <section id="idea" class="campaign-plan" aria-labelledby="plan-heading">
